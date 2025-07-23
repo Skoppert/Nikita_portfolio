@@ -32,34 +32,40 @@ const ArtworkCard = ({
   return (
     <>
       <div 
-        className={`group cursor-pointer ${className}`} 
+        className={`group cursor-pointer transform transition-all duration-700 hover:scale-105 hover:-translate-y-2 ${className}`} 
         onClick={() => setIsModalOpen(true)}
         style={style}
       >
-        <div className="relative overflow-hidden rounded-lg gallery-shadow artwork-hover bg-white">
-          <img 
-            src={imageSrc} 
-            alt={title}
-            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-          />
-          <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center">
-            <ZoomIn className="text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" size={32} />
+        <div className="relative overflow-hidden rounded-lg gallery-shadow bg-white transform transition-all duration-500 group-hover:shadow-2xl">
+          <div className="relative overflow-hidden">
+            <img 
+              src={imageSrc} 
+              alt={title}
+              className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:brightness-110"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-500 flex items-center justify-center">
+              <ZoomIn className="text-white opacity-0 group-hover:opacity-100 transition-all duration-300 transform scale-75 group-hover:scale-100" size={32} />
+            </div>
           </div>
-          <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-            <h3 className="text-white font-playfair font-medium text-lg">{title}</h3>
-            <p className="text-white/80 text-sm font-cormorant">{category}</p>
-            {year && <p className="text-white/60 text-xs">{year}</p>}
+          
+          <div className="absolute bottom-0 left-0 right-0 p-4 transform translate-y-full group-hover:translate-y-0 transition-transform duration-500">
+            <div className="bg-white/95 backdrop-blur-sm rounded-lg p-3 shadow-lg">
+              <h3 className="text-foreground font-playfair font-medium text-lg mb-1">{title}</h3>
+              <p className="text-muted-foreground text-sm font-cormorant">{category}</p>
+              {year && <p className="text-muted-foreground text-xs font-cormorant mt-1">{year}</p>}
+            </div>
           </div>
         </div>
       </div>
 
       <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
-        <DialogContent className="max-w-6xl w-full h-full max-h-[90vh] p-0 overflow-hidden">
+        <DialogContent className="max-w-6xl w-full h-full max-h-[90vh] p-0 overflow-hidden animate-scale-in">
           <DialogHeader className="absolute top-4 right-4 z-10">
             <Button
               variant="ghost"
               size="icon"
-              className="bg-white/90 hover:bg-white text-foreground rounded-full"
+              className="bg-white/90 hover:bg-white text-foreground rounded-full transition-all duration-300 hover:scale-110"
               onClick={() => setIsModalOpen(false)}
             >
               <X size={20} />
@@ -72,12 +78,12 @@ const ArtworkCard = ({
               <img 
                 src={imageSrc} 
                 alt={title}
-                className="max-w-full max-h-full object-contain rounded-lg gallery-shadow"
+                className="max-w-full max-h-full object-contain rounded-lg gallery-shadow animate-fade-in"
               />
             </div>
             
             {/* Details */}
-            <div className="w-80 bg-background p-8 overflow-y-auto">
+            <div className="w-80 bg-background p-8 overflow-y-auto animate-fade-in" style={{ animationDelay: '0.2s' }}>
               <div className="space-y-6">
                 <div>
                   <h3 className="text-2xl font-playfair font-bold text-foreground mb-2">{title}</h3>

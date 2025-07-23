@@ -71,4 +71,23 @@
     transform: translateY(-4px);
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12), 0 4px 12px rgba(0, 0, 0, 0.08);
   }
+
+  /* Enhanced animations for artwork cards */
+  .artwork-card {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .artwork-card:nth-child(even) {
+    animation-delay: -3s;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-5px); }
+  }
+
+  /* Smooth scroll behavior */
+  html {
+    scroll-behavior: smooth;
+  }
 }

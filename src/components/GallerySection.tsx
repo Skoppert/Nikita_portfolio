@@ -1,10 +1,14 @@
-
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import ArtworkCard from './ArtworkCard';
 import { Button } from '@/components/ui/button';
 
 const GallerySection = () => {
   const [activeCategory, setActiveCategory] = useState<'gezichten' | 'personen' | 'expressie'>('gezichten');
+  const [animationKey, setAnimationKey] = useState(0);
+
+  useEffect(() => {
+    setAnimationKey(prev => prev + 1);
+  }, [activeCategory]);
 
   const artworks = {
     gezichten: [
@@ -137,24 +141,24 @@ const GallerySection = () => {
     <section id="gallerij" className="py-20 bg-cream-50">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-playfair font-bold text-foreground mb-6">
-            Gallerij
+          <h2 className="text-4xl md:text-5xl font-playfair font-bold text-foreground mb-6 animate-fade-in">
+            Schilderijen Collectie
           </h2>
-          <div className="w-16 h-1 bg-primary mx-auto mb-8"></div>
-          <p className="text-lg text-muted-foreground font-cormorant max-w-2xl mx-auto">
-            Ontdek mijn collectie schilderijen, onderverdeeld in drie categorieën die elk hun eigen verhaal vertellen.
+          <div className="w-16 h-1 bg-primary mx-auto mb-8 animate-fade-in" style={{ animationDelay: '0.2s' }}></div>
+          <p className="text-lg text-muted-foreground font-cormorant max-w-2xl mx-auto animate-fade-in" style={{ animationDelay: '0.4s' }}>
+            Ontdek een wereld van kleuren, emoties en expressie door deze collectie schilderijen, onderverdeeld in drie categorieën.
           </p>
         </div>
 
         {/* Category Navigation */}
         <div className="flex justify-center mb-12">
-          <div className="flex flex-wrap gap-4 p-2 bg-white rounded-lg gallery-shadow">
+          <div className="flex flex-wrap gap-4 p-2 bg-white rounded-lg gallery-shadow animate-scale-in">
             {categories.map((category) => (
               <Button
                 key={category.key}
                 variant={activeCategory === category.key ? "default" : "ghost"}
                 onClick={() => setActiveCategory(category.key as any)}
-                className="px-6 py-3 font-cormorant text-lg relative"
+                className="px-6 py-3 font-cormorant text-lg relative transition-all duration-300 hover:scale-105"
               >
                 {category.label}
               </Button>
@@ -164,16 +168,16 @@ const GallerySection = () => {
 
         {/* Category Description */}
         <div className="text-center mb-12">
-          <h3 className="text-2xl font-playfair font-medium text-foreground mb-2">
+          <h3 className="text-2xl font-playfair font-medium text-foreground mb-2 animate-fade-in">
             {categories.find(c => c.key === activeCategory)?.label}
           </h3>
-          <p className="text-muted-foreground font-cormorant">
+          <p className="text-muted-foreground font-cormorant animate-fade-in" style={{ animationDelay: '0.1s' }}>
             {categories.find(c => c.key === activeCategory)?.description}
           </p>
         </div>
 
-        {/* Gallery Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Gallery Grid with Staggered Animations */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" key={animationKey}>
           {artworks[activeCategory].map((artwork, index) => (
             <ArtworkCard
               key={`${activeCategory}-${index}`}
@@ -184,8 +188,11 @@ const GallerySection = () => {
               year={artwork.year}
               dimensions={artwork.dimensions}
               technique={artwork.technique}
-              className="animate-fade-in"
-              style={{ animationDelay: `${index * 0.1}s` }}
+              className="animate-fade-in hover:animate-none transition-all duration-500 hover:scale-105"
+              style={{ 
+                animationDelay: `${index * 0.15}s`,
+                animationFillMode: 'both'
+              }}
             />
           ))}
         </div>
