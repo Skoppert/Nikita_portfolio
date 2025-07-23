@@ -21,7 +21,7 @@ const Header = () => {
           {/* Logo */}
           <div className="flex items-center">
             <h1 className="text-2xl font-playfair font-bold text-foreground">
-              Maria van der Berg
+              Nikita Beekhof
             </h1>
           </div>
 
@@ -35,7 +35,7 @@ const Header = () => {
             </button>
             <button
               onClick={() => scrollToSection('over-mij')}
-              className="text-foreground hover:text-primary transition-colors duration-200 font-cormorant text-lg"
+              className="text-foreground hover:text-primary transition-colors duration-200 font-cormorant text-lg font-medium"
             >
               Over mij
             </button>
@@ -82,7 +82,7 @@ const Header = () => {
               </button>
               <button
                 onClick={() => scrollToSection('over-mij')}
-                className="text-left text-foreground hover:text-primary transition-colors duration-200 font-cormorant text-lg"
+                className="text-left text-foreground hover:text-primary transition-colors duration-200 font-cormorant text-lg font-medium"
               >
                 Over mij
               </button>
