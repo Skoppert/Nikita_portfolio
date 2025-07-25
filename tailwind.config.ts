@@ -146,13 +146,31 @@ export default {
 						transform: 'scale(1)',
 						opacity: '1'
 					}
+				},
+				'scroll-left': {
+					'0%': {
+						transform: 'translateX(0)'
+					},
+					'100%': {
+						transform: 'translateX(-33.333%)'
+					}
+				},
+				'scroll-right': {
+					'0%': {
+						transform: 'translateX(-33.333%)'
+					},
+					'100%': {
+						transform: 'translateX(0)'
+					}
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
 				'accordion-up': 'accordion-up 0.2s ease-out',
 				'fade-in': 'fade-in 0.6s ease-out',
-				'scale-in': 'scale-in 0.4s ease-out'
+				'scale-in': 'scale-in 0.4s ease-out',
+				'scroll-left': 'scroll-left linear infinite',
+				'scroll-right': 'scroll-right linear infinite'
 			}
 		}
 	},
