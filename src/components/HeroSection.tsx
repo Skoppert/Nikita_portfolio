@@ -3,7 +3,21 @@ import { useEffect, useState } from 'react';
 import ArtworkCard from './ArtworkCard';
 
 const HeroSection = () => {
-  const artworks = {
+  // Definieer een type voor een kunstwerk
+  type Artwork = {
+    title: string;
+    imageSrc: string;
+    description: string;
+    year: string;
+    dimensions: string;
+    technique: string;
+  };
+
+  const artworks: {
+    gezichten: Artwork[];
+    personen: Artwork[];
+    expressie: Artwork[];
+  } = {
     gezichten: [
       {
         title: "Portret van Anna",
@@ -44,6 +58,70 @@ const HeroSection = () => {
         year: "2022",
         dimensions: "50x70 cm",
         technique: "Olieverf op doek"
+      },
+      {
+        title: "Abstract Gezicht",
+        imageSrc: "/images/gezichten/Pomp schilderij.jpg",
+        description: "Expressief abstract portret met krachtige penseelstreken en dynamische kleuren.",
+        year: "2024",
+        dimensions: "60x80 cm",
+        technique: "Acrylverf op doek"
+      },
+      {
+        title: "Schilderij Richard.jpg",
+        imageSrc: "/images/gezichten/Schilderij Richard.jpg",
+        description: "",
+        year: "",
+        dimensions: "",
+        technique: ""
+      },
+      {
+        title: "Blauw-geel-rood.jpg",
+        imageSrc: "/images/gezichten/Blauw-geel-rood.jpg",
+        description: "",
+        year: "",
+        dimensions: "",
+        technique: ""
+      },
+      {
+        title: "Gestolen schilderij.jpg",
+        imageSrc: "/images/gezichten/Gestolen schilderij.jpg",
+        description: "",
+        year: "",
+        dimensions: "",
+        technique: ""
+      },
+      {
+        title: "Pomp schilderij.jpg",
+        imageSrc: "/images/gezichten/Pomp schilderij.jpg",
+        description: "",
+        year: "",
+        dimensions: "",
+        technique: ""
+      },
+      {
+        title: "Geel oranje blauw.jpg",
+        imageSrc: "/images/gezichten/Geel oranje blauw.jpg",
+        description: "",
+        year: "",
+        dimensions: "",
+        technique: ""
+      },
+      {
+        title: "Zwart-paars-blauw.jpg",
+        imageSrc: "/images/gezichten/Zwart-paars-blauw.jpg",
+        description: "",
+        year: "",
+        dimensions: "",
+        technique: ""
+      },
+      {
+        title: "Zwart-groen-wit-oranje.jpg",
+        imageSrc: "/images/gezichten/Zwart-groen-wit-oranje.jpg",
+        description: "",
+        year: "",
+        dimensions: "",
+        technique: ""
       }
     ],
     personen: [
@@ -78,6 +156,14 @@ const HeroSection = () => {
         year: "2022",
         dimensions: "50x70 cm",
         technique: "Olieverf op doek"
+      },
+      {
+        title: "Marilyn Monroe.jpg",
+        imageSrc: "/images/personen/Marilyn Monroe.jpg",
+        description: "",
+        year: "",
+        dimensions: "",
+        technique: ""
       }
     ],
     expressie: [
@@ -120,7 +206,7 @@ const HeroSection = () => {
         year: "2023",
         dimensions: "80x100 cm",
         technique: "Olieverf op doek"
-      }
+      },
     ]
   };
 
@@ -136,7 +222,7 @@ const HeroSection = () => {
     direction, 
     speed = 30 
   }: { 
-    artworks: any[], 
+    artworks: Artwork[], 
     category: string, 
     direction: 'left' | 'right', 
     speed?: number 
@@ -151,26 +237,44 @@ const HeroSection = () => {
         </h3>
         <div className="relative overflow-hidden">
           <div 
-            className={`flex gap-6 ${direction === 'left' ? 'animate-scroll-left' : 'animate-scroll-right'}`}
+            className={`flex gap-6 items-center ${direction === 'left' ? 'animate-scroll-left' : 'animate-scroll-right'}`}
             style={{
-              width: `${duplicatedArtworks.length * 320}px`,
               animationDuration: `${speed}s`,
               animationTimingFunction: 'linear',
               animationIterationCount: 'infinite'
             }}
           >
             {duplicatedArtworks.map((artwork, index) => (
-              <div key={`${category}-${index}`} className="flex-shrink-0 w-80">
-                <ArtworkCard
-                  title={artwork.title}
-                  category={category}
-                  imageSrc={artwork.imageSrc}
-                  description={artwork.description}
-                  year={artwork.year}
-                  dimensions={artwork.dimensions}
-                  technique={artwork.technique}
-                  className="h-80"
-                />
+              <div key={`${category}-${index}`} className="flex-shrink-0">
+                <div className="group cursor-pointer transform transition-all duration-700 hover:scale-105 hover:-translate-y-2">
+                  <div className="relative overflow-hidden gallery-shadow transform transition-all duration-500 group-hover:shadow-2xl">
+                    <div className="relative h-64 flex items-center justify-center">
+                      <img 
+                        src={artwork.imageSrc} 
+                        alt={artwork.title}
+                        className="h-full w-auto object-contain transition-all duration-700 group-hover:scale-105 group-hover:brightness-110"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-500 flex items-center justify-center">
+                        <div className="text-white opacity-0 group-hover:opacity-100 transition-all duration-300 transform scale-75 group-hover:scale-100">
+                          <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                            <circle cx="11" cy="11" r="8"/>
+                            <path d="21 21l-4.35-4.35"/>
+                            <circle cx="11" cy="11" r="3"/>
+                          </svg>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div className="absolute bottom-0 left-0 right-0 p-4 transform translate-y-full group-hover:translate-y-0 transition-transform duration-500">
+                      <div className="bg-white/95 backdrop-blur-sm rounded-lg p-3 shadow-lg">
+                        <h3 className="text-foreground font-playfair font-medium text-lg mb-1">{artwork.title}</h3>
+                        <p className="text-muted-foreground text-sm font-cormorant">{category}</p>
+                        {artwork.year && <p className="text-muted-foreground text-xs font-cormorant mt-1">{artwork.year}</p>}
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             ))}
           </div>
@@ -221,22 +325,22 @@ const HeroSection = () => {
       {/* Call to Action */}
       <div className="text-center py-16 animate-fade-in" style={{ animationDelay: '0.8s' }}>
         <p className="text-xl text-muted-foreground font-cormorant mb-6">
-          Ontdek meer over de kunstenaar en haar verhaal
+          Bekijk de volledige collectie en ontdek alle schilderijen in detail
         </p>
         <button
           onClick={() => {
-            const element = document.getElementById('over-mij');
+            const element = document.getElementById('gallerij');
             if (element) {
               element.scrollIntoView({ behavior: 'smooth' });
             }
           }}
           className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-3 rounded-lg font-cormorant text-lg transition-all duration-300 hover:scale-105 gallery-shadow"
         >
-          Leer meer over mij
+          Bekijk alle schilderijen
         </button>
       </div>
 
-      <style jsx>{`
+      <style>{`
         @keyframes scroll-left {
           0% {
             transform: translateX(0);

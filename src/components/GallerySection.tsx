@@ -10,7 +10,21 @@ const GallerySection = () => {
     setAnimationKey(prev => prev + 1);
   }, [activeCategory]);
 
-  const artworks = {
+  // Definieer een type voor een kunstwerk
+  type Artwork = {
+    title: string;
+    imageSrc: string;
+    description: string;
+    year: string;
+    dimensions: string;
+    technique: string;
+  };
+
+  const artworks: {
+    gezichten: Artwork[];
+    personen: Artwork[];
+    expressie: Artwork[];
+  } = {
     gezichten: [
       {
         title: "Portret van Anna",
@@ -51,6 +65,102 @@ const GallerySection = () => {
         year: "2022",
         dimensions: "50x70 cm",
         technique: "Olieverf op doek"
+      },
+      {
+        title: "Abstract Gezicht",
+        imageSrc: "/images/gezichten/Pomp schilderij.jpg",
+        description: "Expressief abstract portret met krachtige penseelstreken en dynamische kleuren.",
+        year: "2024",
+        dimensions: "60x80 cm",
+        technique: "Acrylverf op doek"
+      },
+      {
+        title: "Schilderij Richard.jpg",
+        imageSrc: "/images/gezichten/Schilderij Richard.jpg",
+        description: "",
+        year: "",
+        dimensions: "",
+        technique: ""
+      },
+      {
+        title: "Blauw-geel-rood.jpg",
+        imageSrc: "/images/gezichten/Blauw-geel-rood.jpg",
+        description: "",
+        year: "",
+        dimensions: "",
+        technique: ""
+      },
+      {
+        title: "Gestolen schilderij.jpg",
+        imageSrc: "/images/gezichten/Gestolen schilderij.jpg",
+        description: "",
+        year: "",
+        dimensions: "",
+        technique: ""
+      },
+      {
+        title: "Pomp schilderij.jpg",
+        imageSrc: "/images/gezichten/Pomp schilderij.jpg",
+        description: "",
+        year: "",
+        dimensions: "",
+        technique: ""
+      },
+      {
+        title: "Geel oranje blauw.jpg",
+        imageSrc: "/images/gezichten/Geel oranje blauw.jpg",
+        description: "",
+        year: "",
+        dimensions: "",
+        technique: ""
+      },
+      {
+        title: "Zwart-paars-blauw.jpg",
+        imageSrc: "/images/gezichten/Zwart-paars-blauw.jpg",
+        description: "",
+        year: "",
+        dimensions: "",
+        technique: ""
+      },
+      {
+        title: "Zwart-groen-wit-oranje.jpg",
+        imageSrc: "/images/gezichten/Zwart-groen-wit-oranje.jpg",
+        description: "",
+        year: "",
+        dimensions: "",
+        technique: ""
+      },
+      {
+        title: "Glow in the dark.jpg",
+        imageSrc: "/images/gezichten/Glow in the dark.jpg",
+        description: "",
+        year: "",
+        dimensions: "",
+        technique: ""
+      },
+      {
+        title: "Paars geel oranje.jpg",
+        imageSrc: "/images/gezichten/Paars geel oranje.jpg",
+        description: "",
+        year: "",
+        dimensions: "",
+        technique: ""
+      },
+      {
+        title: "Schilderij Siebe.jpg",
+        imageSrc: "/images/gezichten/Schilderij Siebe.jpg",
+        description: "",
+        year: "",
+        dimensions: "",
+        technique: ""
+      },
+      {
+        title: "USA.jpg",
+        imageSrc: "/images/gezichten/USA.jpg",
+        description: "",
+        year: "",
+        dimensions: "",
+        technique: ""
       }
     ],
     personen: [
@@ -85,6 +195,14 @@ const GallerySection = () => {
         year: "2022",
         dimensions: "50x70 cm",
         technique: "Olieverf op doek"
+      },
+      {
+        title: "Marilyn Monroe.jpg",
+        imageSrc: "/images/personen/Marilyn Monroe.jpg",
+        description: "",
+        year: "",
+        dimensions: "",
+        technique: ""
       }
     ],
     expressie: [
@@ -127,6 +245,38 @@ const GallerySection = () => {
         year: "2023",
         dimensions: "80x100 cm",
         technique: "Olieverf op doek"
+      },
+      {
+        title: "Blend 2.jpg",
+        imageSrc: "/images/expressie/Blend 2.jpg",
+        description: "",
+        year: "",
+        dimensions: "",
+        technique: ""
+      },
+      {
+        title: "Blend 3.jpg",
+        imageSrc: "/images/expressie/Blend 3.jpg",
+        description: "",
+        year: "",
+        dimensions: "",
+        technique: ""
+      },
+      {
+        title: "God is a woman.jpg",
+        imageSrc: "/images/expressie/God is a woman.jpg",
+        description: "",
+        year: "",
+        dimensions: "",
+        technique: ""
+      },
+      {
+        title: "The light from a woman.jpg",
+        imageSrc: "/images/expressie/The light from a woman.jpg",
+        description: "",
+        year: "",
+        dimensions: "",
+        technique: ""
       }
     ]
   };
@@ -157,7 +307,7 @@ const GallerySection = () => {
               <Button
                 key={category.key}
                 variant={activeCategory === category.key ? "default" : "ghost"}
-                onClick={() => setActiveCategory(category.key as any)}
+                onClick={() => setActiveCategory(category.key as 'gezichten' | 'personen' | 'expressie')}
                 className="px-6 py-3 font-cormorant text-lg relative transition-all duration-300 hover:scale-105"
               >
                 {category.label}
@@ -177,8 +327,8 @@ const GallerySection = () => {
         </div>
 
         {/* Gallery Grid with Staggered Animations */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" key={animationKey}>
-          {artworks[activeCategory].map((artwork, index) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" key={animationKey}>
+          {artworks[activeCategory].map((artwork: Artwork, index) => (
             <ArtworkCard
               key={`${activeCategory}-${index}`}
               title={artwork.title}

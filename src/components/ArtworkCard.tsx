@@ -36,12 +36,12 @@ const ArtworkCard = ({
         onClick={() => setIsModalOpen(true)}
         style={style}
       >
-        <div className="relative overflow-hidden rounded-lg gallery-shadow bg-white transform transition-all duration-500 group-hover:shadow-2xl">
-          <div className="relative overflow-hidden">
+        <div className="relative overflow-hidden gallery-shadow transform transition-all duration-500 group-hover:shadow-2xl">
+          <div className="relative min-h-[200px] flex items-center justify-center">
             <img 
               src={imageSrc} 
               alt={title}
-              className="w-full h-full object-cover transition-all duration-700 group-hover:scale-110 group-hover:brightness-110"
+              className="max-w-full max-h-full object-contain transition-all duration-700 group-hover:scale-105 group-hover:brightness-110"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
             <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-500 flex items-center justify-center">

@@ -1,31 +1,28 @@
 
-import { Calendar, MapPin, Clock } from 'lucide-react';
+import { Calendar, MapPin, Clock, ExternalLink, Phone, Globe } from 'lucide-react';
 
 const ExhibitionsSection = () => {
   const exhibitions = [
     {
-      title: "Gezichten van de Tijd",
-      location: "Galerie Moderne Kunst, Amsterdam",
-      date: "15 maart - 30 april 2024",
-      time: "10:00 - 18:00",
-      description: "Een solo-expositie waarin ik de relatie tussen tijd en menselijke expressie verken.",
-      status: "upcoming"
+      title: "Blend Baarle",
+      location: "Desirée Geraertstraat 3, 5111 CH Baarle-Nassau",
+      date: "Permanent te zien",
+      time: "Do-Za: 17:00-01:00 | Zo: 12:00-24:00",
+      description: "Een unieke locatie in Baarle-Nassau waar premium wijnen, cocktails en artisanale hapjes worden geserveerd. Mijn schilderijen vormen de perfecte achtergrond voor deze stijlvolle ervaring.",
+      status: "current",
+      website: "https://blend-baarle.nl/",
+      phone: "+31133032386",
+      email: "info@blend-baarle.nl",
+      mapsUrl: "https://www.google.com/maps/search/?api=1&query=Desirée+Geraertstraat+3,+5111+CH+Baarle-Nassau"
     },
     {
-      title: "Collectieve Emoties",
-      location: "Cultureel Centrum De Brug, Utrecht",
-      date: "5 januari - 28 februari 2024",
-      time: "11:00 - 17:00",
-      description: "Groepsexpositie met focus op emotionele expressie in hedendaagse kunst.",
-      status: "current"
-    },
-    {
-      title: "Portretten in Beweging",
-      location: "Kunsthuis Zeeland, Middelburg",
-      date: "20 september - 15 november 2023",
-      time: "12:00 - 18:00",
-      description: "Een retrospectieve van mijn portretwerk uit de afgelopen vijf jaar.",
-      status: "past"
+      title: "Café De Pomp",
+      location: "Singel 12, 5111 CD Baarle-Nassau, Nederland",
+      date: "Permanent te zien",
+      time: "Zie locatie voor openingstijden",
+      description: "Een gezellig café in het hart van Baarle-Nassau waar je kunt genieten van mijn kunstwerken in een ontspannen sfeer.",
+      status: "current",
+      mapsUrl: "https://www.google.com/maps/search/?api=1&query=Singel+12,+5111+CD+Baarle-Nassau,+Nederland"
     }
   ];
 
@@ -34,11 +31,11 @@ const ExhibitionsSection = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-playfair font-bold text-foreground mb-6">
-            Exposities
+            Waar te Zien
           </h2>
           <div className="w-16 h-1 bg-primary mx-auto mb-8"></div>
           <p className="text-lg text-muted-foreground font-cormorant max-w-2xl mx-auto">
-            Ontdek waar mijn werk tentoongesteld wordt en waar je mijn schilderijen kunt bewonderen.
+            Bezoek deze restaurants en cafés waar mijn schilderijen permanent hangen en geniet van kunst tijdens het dineren.
           </p>
         </div>
 
@@ -86,9 +83,57 @@ const ExhibitionsSection = () => {
                   </div>
                 </div>
                 
-                <p className="text-muted-foreground font-cormorant leading-relaxed">
+                <p className="text-muted-foreground font-cormorant leading-relaxed mb-6">
                   {exhibition.description}
                 </p>
+                
+                {/* Action Buttons */}
+                <div className="flex flex-wrap gap-3">
+                  {/* Google Maps Button - Available for all locations */}
+                  <a 
+                    href={exhibition.mapsUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 bg-primary hover:bg-primary/90 text-primary-foreground px-4 py-2 rounded-lg font-cormorant transition-all duration-300 hover:scale-105"
+                  >
+                    <MapPin size={16} />
+                    Bekijk op Maps
+                  </a>
+                  
+                  {/* Website Button - Only for Blend */}
+                  {exhibition.website && (
+                    <a 
+                      href={exhibition.website}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 bg-blue-50 hover:bg-blue-100 text-blue-700 hover:text-blue-800 px-4 py-2 rounded-lg font-cormorant transition-all duration-300 hover:scale-105 border border-blue-200"
+                    >
+                      <Globe size={16} />
+                      Website bezoeken
+                    </a>
+                  )}
+                  
+                  {/* Reservation Buttons - Only for Blend */}
+                  {exhibition.phone && (
+                    <a 
+                      href={`tel:${exhibition.phone}`}
+                      className="flex items-center gap-2 bg-terracotta-500 hover:bg-terracotta-600 text-white px-4 py-2 rounded-lg font-cormorant transition-all duration-300 hover:scale-105"
+                    >
+                      <Phone size={16} />
+                      Bellen
+                    </a>
+                  )}
+                  
+                  {exhibition.email && (
+                    <a 
+                      href={`mailto:${exhibition.email}?subject=Reservering Blend Baarle`}
+                      className="flex items-center gap-2 bg-green-50 hover:bg-green-100 text-green-700 hover:text-green-800 px-4 py-2 rounded-lg font-cormorant transition-all duration-300 hover:scale-105 border border-green-200"
+                    >
+                      <ExternalLink size={16} />
+                      E-mail reserveren
+                    </a>
+                  )}
+                </div>
               </div>
             </div>
           ))}
