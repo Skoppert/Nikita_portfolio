@@ -55,15 +55,6 @@ const GallerySection = () => {
         technique: ""
       },
       {
-        title: "Pomp schilderij.jpg",
-        imageSrc: "/images/gezichten/Pomp schilderij.jpg",
-        description: "",
-        year: "",
-        dimensions: "",
-        technique: "",
-        location: "Café De Pomp"
-      },
-      {
         title: "Geel oranje blauw.jpg",
         imageSrc: "/images/gezichten/Geel oranje blauw.jpg",
         description: "",

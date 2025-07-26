@@ -54,15 +54,6 @@ const HeroSection = () => {
         technique: ""
       },
       {
-        title: "Pomp schilderij.jpg",
-        imageSrc: "/images/gezichten/Pomp schilderij.jpg",
-        description: "",
-        year: "",
-        dimensions: "",
-        technique: "",
-        location: "Café De Pomp"
-      },
-      {
         title: "Geel oranje blauw.jpg",
         imageSrc: "/images/gezichten/Geel oranje blauw.jpg",
         description: "",
@@ -95,6 +86,15 @@ const HeroSection = () => {
         year: "",
         dimensions: "",
         technique: ""
+      },
+      {
+        title: "Blend 2.jpg",
+        imageSrc: "/images/expressie/Blend 2.jpg",
+        description: "",
+        year: "",
+        dimensions: "",
+        technique: "",
+        location: "Blend Baarle"
       },
       {
         title: "Blend 3.jpg",
