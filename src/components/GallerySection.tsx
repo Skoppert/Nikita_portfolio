@@ -22,8 +22,8 @@ const GallerySection = () => {
   } = {
     originals: [
       {
-        title: "Abstract Gezicht",
-        imageSrc: "/images/gezichten/Pomp schilderij.jpg",
+        title: "The Abstraction",
+        imageSrc: "/images/gezichten/The Abstraction.jpg",
         description: "Expressief abstract portret met krachtige penseelstreken en dynamische kleuren.",
         year: "2024",
         dimensions: "60x80 cm",
@@ -31,80 +31,80 @@ const GallerySection = () => {
         location: "Café De Pomp"
       },
       {
-        title: "Schilderij Richard.jpg",
-        imageSrc: "/images/gezichten/Schilderij Richard.jpg",
+        title: "The Rasta",
+        imageSrc: "/images/gezichten/The Rasta.jpg",
         description: "",
         year: "",
         dimensions: "",
         technique: ""
       },
       {
-        title: "Blauw-geel-rood.jpg",
-        imageSrc: "/images/gezichten/Blauw-geel-rood.jpg",
+        title: "The Blue",
+        imageSrc: "/images/gezichten/The Blue.jpg",
         description: "",
         year: "",
         dimensions: "",
         technique: ""
       },
       {
-        title: "Gestolen schilderij.jpg",
-        imageSrc: "/images/gezichten/Gestolen schilderij.jpg",
+        title: "The Missing Piece",
+        imageSrc: "/images/gezichten/The Missing Piece.jpg",
         description: "",
         year: "",
         dimensions: "",
         technique: ""
       },
       {
-        title: "Geel oranje blauw.jpg",
-        imageSrc: "/images/gezichten/Geel oranje blauw.jpg",
+        title: "The Explosion",
+        imageSrc: "/images/gezichten/The Explosion.jpg",
         description: "",
         year: "",
         dimensions: "",
         technique: ""
       },
       {
-        title: "Zwart-paars-blauw.jpg",
-        imageSrc: "/images/gezichten/Zwart-paars-blauw.jpg",
+        title: "Dark Moon",
+        imageSrc: "/images/gezichten/Dark Moon.jpg",
         description: "",
         year: "",
         dimensions: "",
         technique: ""
       },
       {
-        title: "Zwart-groen-wit-oranje.jpg",
-        imageSrc: "/images/gezichten/Zwart-groen-wit-oranje.jpg",
+        title: "The Green One",
+        imageSrc: "/images/gezichten/The Green One.jpg",
         description: "",
         year: "",
         dimensions: "",
         technique: ""
       },
       {
-        title: "Glow in the dark.jpg",
-        imageSrc: "/images/gezichten/Glow in the dark.jpg",
+        title: "Dark Sun",
+        imageSrc: "/images/gezichten/Dark Sun.jpg",
         description: "",
         year: "",
         dimensions: "",
         technique: ""
       },
       {
-        title: "Paars geel oranje.jpg",
-        imageSrc: "/images/gezichten/Paars geel oranje.jpg",
+        title: "The Bleury",
+        imageSrc: "/images/gezichten/The Bleury.jpg",
         description: "",
         year: "",
         dimensions: "",
         technique: ""
       },
       {
-        title: "Schilderij Siebe.jpg",
-        imageSrc: "/images/gezichten/Schilderij Siebe.jpg",
+        title: "The Dutch",
+        imageSrc: "/images/gezichten/The Dutch.jpg",
         description: "",
         year: "",
         dimensions: "",
         technique: ""
       },
       {
-        title: "USA.jpg",
-        imageSrc: "/images/gezichten/USA.jpg",
+        title: "The Exotic",
+        imageSrc: "/images/gezichten/The Exotic.jpg",
         description: "",
         year: "",
         dimensions: "",
@@ -113,7 +113,7 @@ const GallerySection = () => {
     ],
     uniques: [
       {
-        title: "Marilyn Monroe.jpg",
+        title: "Marilyn Monroe",
         imageSrc: "/images/personen/Marilyn Monroe.jpg",
         description: "",
         year: "",
@@ -121,8 +121,8 @@ const GallerySection = () => {
         technique: ""
       },
       {
-        title: "Blend 3.jpg",
-        imageSrc: "/images/expressie/Blend 3.jpg",
+        title: "Sleeping Beauty",
+        imageSrc: "/images/expressie/Sleeping Beauty.jpg",
         description: "",
         year: "",
         dimensions: "",
@@ -130,7 +130,7 @@ const GallerySection = () => {
         location: "Blend Baarle"
       },
       {
-        title: "God is a woman.jpg",
+        title: "God is a woman",
         imageSrc: "/images/expressie/God is a woman.jpg",
         description: "",
         year: "",
@@ -139,7 +139,7 @@ const GallerySection = () => {
         location: "Blend Baarle"
       },
       {
-        title: "The light from a woman.jpg",
+        title: "The light from a woman",
         imageSrc: "/images/expressie/The light from a woman.jpg",
         description: "",
         year: "",
@@ -241,9 +241,9 @@ const GallerySection = () => {
               <div className="w-1/2 animate-fade-in-scale" style={{ animationDelay: '0.5s', animationFillMode: 'both' }}>
                 <ArtworkCard
                   key={`${activeCategory}-blend-2`}
-                  title="Blend 2"
+                  title="Flow"
                   category={categories.find(c => c.key === activeCategory)?.label || ''}
-                  imageSrc="/images/expressie/Blend 2.jpg"
+                  imageSrc="/images/expressie/Flow.jpg"
                   description=""
                   year=""
                   dimensions=""

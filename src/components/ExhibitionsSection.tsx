@@ -9,12 +9,12 @@ const ExhibitionsSection = () => {
   const paintingsData = {
     "Blend Baarle": [
       {
-        title: "Blend 2",
-        imageSrc: "/images/expressie/Blend 2.jpg"
+        title: "Flow",
+        imageSrc: "/images/expressie/Flow.jpg"
       },
       {
-        title: "Blend 3",
-        imageSrc: "/images/expressie/Blend 3.jpg"
+        title: "Sleeping Beauty",
+        imageSrc: "/images/expressie/Sleeping Beauty.jpg"
       },
       {
         title: "God is a woman",
@@ -23,8 +23,8 @@ const ExhibitionsSection = () => {
     ],
     "Café De Pomp": [
       {
-        title: "Pomp schilderij",
-        imageSrc: "/images/gezichten/Pomp schilderij.jpg"
+        title: "The Abstraction",
+        imageSrc: "/images/gezichten/The Abstraction.jpg"
       }
     ]
   };
