@@ -1,4 +1,3 @@
-
 const AboutSection = () => {
   return (
     <section id="over-mij" className="py-20 bg-background relative overflow-hidden">
@@ -30,7 +29,7 @@ const AboutSection = () => {
                 </p>
                 
                 <p className="text-muted-foreground animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
-                  Al meer dan 15 jaar verken ik de grenzen tussen realisme en abstractie, waarbij ik zoek naar 
+                  Al langer dan 10 jaar verken ik de grenzen tussen realisme en abstractie, waarbij ik zoek naar 
                   de essentie van wat het betekent om mens te zijn. Elk schilderij is een dialoog tussen mij en 
                   het onderwerp, een moment van verbinding dat ik probeer vast te leggen op doek.
                 </p>
