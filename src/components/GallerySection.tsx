@@ -3,12 +3,7 @@ import ArtworkCard from './ArtworkCard';
 import { Button } from '@/components/ui/button';
 
 const GallerySection = () => {
-  const [activeCategory, setActiveCategory] = useState<'gezichten' | 'personen' | 'expressie'>('gezichten');
-  const [animationKey, setAnimationKey] = useState(0);
-
-  useEffect(() => {
-    setAnimationKey(prev => prev + 1);
-  }, [activeCategory]);
+  const [activeCategory, setActiveCategory] = useState<'originals' | 'uniques'>('originals');
 
   // Definieer een type voor een kunstwerk
   type Artwork = {
@@ -18,61 +13,22 @@ const GallerySection = () => {
     year: string;
     dimensions: string;
     technique: string;
+    location?: string;
   };
 
   const artworks: {
-    gezichten: Artwork[];
-    personen: Artwork[];
-    expressie: Artwork[];
+    originals: Artwork[];
+    uniques: Artwork[];
   } = {
-    gezichten: [
-      {
-        title: "Portret van Anna",
-        imageSrc: "https://images.unsplash.com/photo-1470813740244-df37b8c1edcb?w=400&h=600&fit=crop",
-        description: "Een intiem portret dat de zachte melancholie van een regenachtige dag vangt.",
-        year: "2023",
-        dimensions: "50x70 cm",
-        technique: "Olieverf op doek"
-      },
-      {
-        title: "De Dromer",
-        imageSrc: "https://images.unsplash.com/photo-1518495973542-4542c06a5843?w=400&h=500&fit=crop",
-        description: "Een portret dat de innerlijke wereld van dromen en verbeelding verkent.",
-        year: "2023",
-        dimensions: "40x50 cm",
-        technique: "Acrylverf op doek"
-      },
-      {
-        title: "Gezicht in Licht",
-        imageSrc: "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?w=400&h=600&fit=crop",
-        description: "Spel van licht en schaduw op een contemplatief gezicht.",
-        year: "2022",
-        dimensions: "60x80 cm",
-        technique: "Olieverf op doek"
-      },
-      {
-        title: "Stille Kracht",
-        imageSrc: "https://images.unsplash.com/photo-1582562124811-c09040d0a901?w=400&h=500&fit=crop",
-        description: "Een portret dat innerlijke kracht en vastberadenheid uitstraalt.",
-        year: "2023",
-        dimensions: "45x60 cm",
-        technique: "Gemengde techniek"
-      },
-      {
-        title: "Vroege Ochtend",
-        imageSrc: "https://images.unsplash.com/photo-1472396961693-142e6e269027?w=400&h=600&fit=crop",
-        description: "Een serene uitdrukking gevangen in het zachte ochtendlicht.",
-        year: "2022",
-        dimensions: "50x70 cm",
-        technique: "Olieverf op doek"
-      },
+    originals: [
       {
         title: "Abstract Gezicht",
         imageSrc: "/images/gezichten/Pomp schilderij.jpg",
         description: "Expressief abstract portret met krachtige penseelstreken en dynamische kleuren.",
         year: "2024",
         dimensions: "60x80 cm",
-        technique: "Acrylverf op doek"
+        technique: "Acrylverf op doek",
+        location: "Café De Pomp"
       },
       {
         title: "Schilderij Richard.jpg",
@@ -104,7 +60,8 @@ const GallerySection = () => {
         description: "",
         year: "",
         dimensions: "",
-        technique: ""
+        technique: "",
+        location: "Café De Pomp"
       },
       {
         title: "Geel oranje blauw.jpg",
@@ -163,92 +120,10 @@ const GallerySection = () => {
         technique: ""
       }
     ],
-    personen: [
-      {
-        title: "Wandelaar",
-        imageSrc: "https://images.unsplash.com/photo-1518495973542-4542c06a5843?w=400&h=600&fit=crop",
-        description: "Een figuur in beweging, vastgelegd in een moment van contemplatie.",
-        year: "2023",
-        dimensions: "70x100 cm",
-        technique: "Acrylverf op doek"
-      },
-      {
-        title: "Rust",
-        imageSrc: "https://images.unsplash.com/photo-1582562124811-c09040d0a901?w=400&h=500&fit=crop",
-        description: "Een moment van stilte en rust in een drukke wereld.",
-        year: "2023",
-        dimensions: "60x80 cm",
-        technique: "Olieverf op doek"
-      },
-      {
-        title: "Ontmoeting",
-        imageSrc: "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?w=400&h=600&fit=crop",
-        description: "Twee figuren in een moment van verbinding en begrip.",
-        year: "2022",
-        dimensions: "80x120 cm",
-        technique: "Gemengde techniek"
-      },
-      {
-        title: "Alleen",
-        imageSrc: "https://images.unsplash.com/photo-1472396961693-142e6e269027?w=400&h=500&fit=crop",
-        description: "Een figuur in landschap, een verhaal van eenzaamheid en kracht.",
-        year: "2022",
-        dimensions: "50x70 cm",
-        technique: "Olieverf op doek"
-      },
+    uniques: [
       {
         title: "Marilyn Monroe.jpg",
         imageSrc: "/images/personen/Marilyn Monroe.jpg",
-        description: "",
-        year: "",
-        dimensions: "",
-        technique: ""
-      }
-    ],
-    expressie: [
-      {
-        title: "Vreugde",
-        imageSrc: "https://images.unsplash.com/photo-1470813740244-df37b8c1edcb?w=400&h=600&fit=crop",
-        description: "Een explosie van kleuren die pure vreugde uitdrukt.",
-        year: "2023",
-        dimensions: "60x80 cm",
-        technique: "Acrylverf op doek"
-      },
-      {
-        title: "Melancholie",
-        imageSrc: "https://images.unsplash.com/photo-1518495973542-4542c06a5843?w=400&h=500&fit=crop",
-        description: "Zachte tinten die een gevoel van weemoed oproepen.",
-        year: "2023",
-        dimensions: "45x60 cm",
-        technique: "Olieverf op doek"
-      },
-      {
-        title: "Passie",
-        imageSrc: "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?w=400&h=600&fit=crop",
-        description: "Warme kleuren en dynamische penseelstreken vol emotie.",
-        year: "2022",
-        dimensions: "70x90 cm",
-        technique: "Gemengde techniek"
-      },
-      {
-        title: "Sereniteit",
-        imageSrc: "https://images.unsplash.com/photo-1582562124811-c09040d0a901?w=400&h=500&fit=crop",
-        description: "Koele tinten die innerlijke rust en vrede uitstralen.",
-        year: "2022",
-        dimensions: "50x70 cm",
-        technique: "Acrylverf op doek"
-      },
-      {
-        title: "Kracht",
-        imageSrc: "https://images.unsplash.com/photo-1472396961693-142e6e269027?w=400&h=600&fit=crop",
-        description: "Krachtige penseelstreken die vastberadenheid uitdrukken.",
-        year: "2023",
-        dimensions: "80x100 cm",
-        technique: "Olieverf op doek"
-      },
-      {
-        title: "Blend 2.jpg",
-        imageSrc: "/images/expressie/Blend 2.jpg",
         description: "",
         year: "",
         dimensions: "",
@@ -260,7 +135,8 @@ const GallerySection = () => {
         description: "",
         year: "",
         dimensions: "",
-        technique: ""
+        technique: "",
+        location: "Blend Baarle"
       },
       {
         title: "God is a woman.jpg",
@@ -268,7 +144,8 @@ const GallerySection = () => {
         description: "",
         year: "",
         dimensions: "",
-        technique: ""
+        technique: "",
+        location: "Blend Baarle"
       },
       {
         title: "The light from a woman.jpg",
@@ -277,40 +154,41 @@ const GallerySection = () => {
         year: "",
         dimensions: "",
         technique: ""
-      }
+      },
     ]
   };
 
   const categories = [
-    { key: 'gezichten', label: 'Gezichten', description: 'Portretten die de ziel raken' },
-    { key: 'personen', label: 'Personen', description: 'Mensen in hun natuurlijke omgeving' },
-    { key: 'expressie', label: 'Expressie', description: 'Emoties vertaald naar kleur en vorm' }
+    { key: 'originals', label: 'Originals', description: 'Authentieke portretten en gezichten' },
+    { key: 'uniques', label: 'Uniques', description: 'Unieke expressieve en persoonlijke kunstwerken' }
   ];
 
   return (
     <section id="gallerij" className="py-20 bg-cream-50">
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-playfair font-bold text-foreground mb-6 animate-fade-in">
+          <h2 className="text-4xl md:text-5xl font-playfair font-bold text-foreground mb-6 animate-bounce-in">
             Schilderijen Collectie
           </h2>
-          <div className="w-16 h-1 bg-primary mx-auto mb-8 animate-fade-in" style={{ animationDelay: '0.2s' }}></div>
-          <p className="text-lg text-muted-foreground font-cormorant max-w-2xl mx-auto animate-fade-in" style={{ animationDelay: '0.4s' }}>
-            Ontdek een wereld van kleuren, emoties en expressie door deze collectie schilderijen, onderverdeeld in drie categorieën.
+          <div className="w-16 h-1 bg-primary mx-auto mb-8 animate-width-expand" style={{ animationDelay: '0.3s' }}></div>
+          <p className="text-lg text-muted-foreground font-cormorant max-w-2xl mx-auto animate-fade-in-up" style={{ animationDelay: '0.5s' }}>
+            Ontdek een wereld van kleuren, emoties en expressie door deze collectie schilderijen, onderverdeeld in twee categorieën.
           </p>
         </div>
 
         {/* Category Navigation */}
         <div className="flex justify-center mb-12">
-          <div className="flex flex-wrap gap-4 p-2 bg-white rounded-lg gallery-shadow animate-scale-in">
-            {categories.map((category) => (
+          <div className="flex flex-wrap gap-4 p-2 bg-white rounded-lg gallery-shadow animate-scale-in-bounce" style={{ animationDelay: '0.7s' }}>
+            {categories.map((category, index) => (
               <Button
                 key={category.key}
                 variant={activeCategory === category.key ? "default" : "ghost"}
-                onClick={() => setActiveCategory(category.key as 'gezichten' | 'personen' | 'expressie')}
-                className="px-6 py-3 font-cormorant text-lg relative transition-all duration-300 hover:scale-105"
+                onClick={() => setActiveCategory(category.key as 'originals' | 'uniques')}
+                className="px-6 py-3 font-cormorant text-lg relative transition-all duration-300 hover:scale-110 hover:shadow-lg hover:-translate-y-1 animate-slide-up"
+                style={{ animationDelay: `${0.8 + index * 0.1}s` }}
               >
-                {category.label}
+                <span className="relative z-10">{category.label}</span>
+                <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-sage-300/20 rounded-lg opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
               </Button>
             ))}
           </div>
@@ -318,35 +196,174 @@ const GallerySection = () => {
 
         {/* Category Description */}
         <div className="text-center mb-12">
-          <h3 className="text-2xl font-playfair font-medium text-foreground mb-2 animate-fade-in">
+          <h3 className="text-2xl font-playfair font-medium text-foreground mb-2 animate-fade-in-up">
             {categories.find(c => c.key === activeCategory)?.label}
           </h3>
-          <p className="text-muted-foreground font-cormorant animate-fade-in" style={{ animationDelay: '0.1s' }}>
+          <p className="text-muted-foreground font-cormorant animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
             {categories.find(c => c.key === activeCategory)?.description}
           </p>
         </div>
 
-        {/* Gallery Grid with Staggered Animations */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6" key={animationKey}>
-          {artworks[activeCategory].map((artwork: Artwork, index) => (
-            <ArtworkCard
-              key={`${activeCategory}-${index}`}
-              title={artwork.title}
-              category={categories.find(c => c.key === activeCategory)?.label || ''}
-              imageSrc={artwork.imageSrc}
-              description={artwork.description}
-              year={artwork.year}
-              dimensions={artwork.dimensions}
-              technique={artwork.technique}
-              className="animate-fade-in hover:animate-none transition-all duration-500 hover:scale-105"
-              style={{ 
-                animationDelay: `${index * 0.15}s`,
-                animationFillMode: 'both'
-              }}
-            />
-          ))}
-        </div>
+        {/* Gallery Grid with side-by-side layout for last two items */}
+        {activeCategory === 'uniques' ? (
+          <div className="space-y-8">
+            {/* First part - regular grid for first 3 items */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {artworks[activeCategory].slice(0, 3).map((artwork: Artwork, index) => (
+                <ArtworkCard
+                  key={`${activeCategory}-${artwork.imageSrc}-${index}`}
+                  title={artwork.title}
+                  category={categories.find(c => c.key === activeCategory)?.label || ''}
+                  imageSrc={artwork.imageSrc}
+                  description={artwork.description}
+                  year={artwork.year}
+                  dimensions={artwork.dimensions}
+                  technique={artwork.technique}
+                  location={artwork.location}
+                  className="transition-all duration-500 hover:scale-105 hover:rotate-1 animate-fade-in-scale"
+                  style={{ 
+                    animationDelay: `${index * 0.1}s`,
+                    animationFillMode: 'both'
+                  }}
+                />
+              ))}
+            </div>
+            
+            {/* Second part - The light from a woman (small) + Blend 2 (large) */}
+            <div className="flex gap-6 items-start">
+              {/* The light from a woman - smaller */}
+              <div className="w-1/3 animate-fade-in-scale" style={{ animationDelay: '0.4s', animationFillMode: 'both' }}>
+                <ArtworkCard
+                  key={`${activeCategory}-the-light-from-a-woman`}
+                  title="The light from a woman"
+                  category={categories.find(c => c.key === activeCategory)?.label || ''}
+                  imageSrc="/images/expressie/The light from a woman.jpg"
+                  description=""
+                  year=""
+                  dimensions=""
+                  technique=""
+                  className="transition-all duration-500 hover:scale-105 hover:rotate-1"
+                />
+              </div>
+              
+              {/* Blend 2 - smaller size */}
+              <div className="w-1/2 animate-fade-in-scale" style={{ animationDelay: '0.5s', animationFillMode: 'both' }}>
+                <ArtworkCard
+                  key={`${activeCategory}-blend-2`}
+                  title="Blend 2"
+                  category={categories.find(c => c.key === activeCategory)?.label || ''}
+                  imageSrc="/images/expressie/Blend 2.jpg"
+                  description=""
+                  year=""
+                  dimensions=""
+                  technique=""
+                  location="Blend Baarle"
+                  className="transition-all duration-500 hover:scale-105 hover:rotate-1"
+                />
+              </div>
+            </div>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {artworks[activeCategory].map((artwork: Artwork, index) => (
+              <ArtworkCard
+                key={`${activeCategory}-${artwork.imageSrc}-${index}`}
+                title={artwork.title}
+                category={categories.find(c => c.key === activeCategory)?.label || ''}
+                imageSrc={artwork.imageSrc}
+                description={artwork.description}
+                year={artwork.year}
+                dimensions={artwork.dimensions}
+                technique={artwork.technique}
+                location={artwork.location}
+                className="transition-all duration-500 hover:scale-105 hover:rotate-1 animate-fade-in-scale"
+                style={{ 
+                  animationDelay: `${index * 0.1}s`,
+                  animationFillMode: 'both'
+                }}
+              />
+            ))}
+          </div>
+        )}
       </div>
+      
+      <style>{`
+        @keyframes bounce-in {
+          0% { 
+            opacity: 0; 
+            transform: scale(0.3) translateY(-50px); 
+          }
+          50% { 
+            opacity: 1; 
+            transform: scale(1.05) translateY(0); 
+          }
+          70% { 
+            transform: scale(0.9); 
+          }
+          100% { 
+            transform: scale(1); 
+          }
+        }
+        
+        @keyframes width-expand {
+          0% { width: 0; opacity: 0; }
+          100% { width: 4rem; opacity: 1; }
+        }
+        
+        @keyframes fade-in-up {
+          0% { 
+            opacity: 0; 
+            transform: translateY(30px); 
+          }
+          100% { 
+            opacity: 1; 
+            transform: translateY(0); 
+          }
+        }
+        
+        @keyframes scale-in-bounce {
+          0% { 
+            opacity: 0; 
+            transform: scale(0.8) translateY(20px); 
+          }
+          60% { 
+            transform: scale(1.02) translateY(-5px); 
+          }
+          100% { 
+            opacity: 1; 
+            transform: scale(1) translateY(0); 
+          }
+        }
+        
+        @keyframes slide-up {
+          0% { 
+            opacity: 0; 
+            transform: translateY(20px); 
+          }
+          100% { 
+            opacity: 1; 
+            transform: translateY(0); 
+          }
+        }
+        
+        @keyframes fade-in-scale {
+          0% { 
+            opacity: 0; 
+            transform: scale(0.8) translateY(20px); 
+          }
+          100% { 
+            opacity: 1; 
+            transform: scale(1) translateY(0); 
+          }
+        }
+        
+        .animate-bounce-in { animation: bounce-in 1s ease-out forwards; }
+        .animate-width-expand { animation: width-expand 1.2s ease-out forwards; }
+        .animate-fade-in-up { animation: fade-in-up 0.8s ease-out forwards; }
+        .animate-scale-in-bounce { animation: scale-in-bounce 0.8s ease-out forwards; }
+        .animate-slide-up { animation: slide-up 0.6s ease-out forwards; }
+        .animate-fade-in-scale { animation: fade-in-scale 0.7s ease-out forwards; }
+      `}</style>
     </section>
   );
 };

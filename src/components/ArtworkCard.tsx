@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
-import { X, ZoomIn } from 'lucide-react';
+import { X, ZoomIn, MapPin } from 'lucide-react';
 
 interface ArtworkCardProps {
   title: string;
@@ -12,6 +12,7 @@ interface ArtworkCardProps {
   year?: string;
   dimensions?: string;
   technique?: string;
+  location?: string;
   className?: string;
   style?: React.CSSProperties;
 }
@@ -24,6 +25,7 @@ const ArtworkCard = ({
   year, 
   dimensions, 
   technique, 
+  location,
   className = "",
   style = {}
 }: ArtworkCardProps) => {
@@ -37,6 +39,14 @@ const ArtworkCard = ({
         style={style}
       >
         <div className="relative overflow-hidden gallery-shadow transform transition-all duration-500 group-hover:shadow-2xl">
+          {/* Location Badge */}
+          {location && (
+            <div className="absolute top-3 right-3 z-10 bg-primary text-primary-foreground px-2 py-1 rounded-full text-xs font-cormorant flex items-center gap-1 animate-bounce-in shadow-lg">
+              <MapPin size={12} />
+              {location}
+            </div>
+          )}
+          
           <div className="relative min-h-[200px] flex items-center justify-center">
             <img 
               src={imageSrc} 
@@ -44,7 +54,7 @@ const ArtworkCard = ({
               className="max-w-full max-h-full object-contain transition-all duration-700 group-hover:scale-105 group-hover:brightness-110"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-500 flex items-center justify-center">
+            <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-500 flex items-center justify-center">
               <ZoomIn className="text-white opacity-0 group-hover:opacity-100 transition-all duration-300 transform scale-75 group-hover:scale-100" size={32} />
             </div>
           </div>
@@ -116,6 +126,13 @@ const ArtworkCard = ({
                     <div>
                       <span className="font-playfair font-medium text-foreground">Techniek: </span>
                       <span className="text-muted-foreground font-cormorant">{technique}</span>
+                    </div>
+                  )}
+                  
+                  {location && (
+                    <div>
+                      <span className="font-playfair font-medium text-foreground">Locatie: </span>
+                      <span className="text-muted-foreground font-cormorant">{location}</span>
                     </div>
                   )}
                 </div>

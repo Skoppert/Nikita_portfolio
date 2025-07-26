@@ -1,6 +1,7 @@
 
 import { useEffect, useState } from 'react';
 import ArtworkCard from './ArtworkCard';
+import { MapPin } from 'lucide-react';
 
 const HeroSection = () => {
   // Definieer een type voor een kunstwerk
@@ -11,61 +12,22 @@ const HeroSection = () => {
     year: string;
     dimensions: string;
     technique: string;
+    location?: string;
   };
 
   const artworks: {
-    gezichten: Artwork[];
-    personen: Artwork[];
-    expressie: Artwork[];
+    originals: Artwork[];
+    uniques: Artwork[];
   } = {
-    gezichten: [
-      {
-        title: "Portret van Anna",
-        imageSrc: "https://images.unsplash.com/photo-1470813740244-df37b8c1edcb?w=400&h=600&fit=crop",
-        description: "Een intiem portret dat de zachte melancholie van een regenachtige dag vangt.",
-        year: "2023",
-        dimensions: "50x70 cm",
-        technique: "Olieverf op doek"
-      },
-      {
-        title: "De Dromer",
-        imageSrc: "https://images.unsplash.com/photo-1518495973542-4542c06a5843?w=400&h=500&fit=crop",
-        description: "Een portret dat de innerlijke wereld van dromen en verbeelding verkent.",
-        year: "2023",
-        dimensions: "40x50 cm",
-        technique: "Acrylverf op doek"
-      },
-      {
-        title: "Gezicht in Licht",
-        imageSrc: "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?w=400&h=600&fit=crop",
-        description: "Spel van licht en schaduw op een contemplatief gezicht.",
-        year: "2022",
-        dimensions: "60x80 cm",
-        technique: "Olieverf op doek"
-      },
-      {
-        title: "Stille Kracht",
-        imageSrc: "https://images.unsplash.com/photo-1582562124811-c09040d0a901?w=400&h=500&fit=crop",
-        description: "Een portret dat innerlijke kracht en vastberadenheid uitstraalt.",
-        year: "2023",
-        dimensions: "45x60 cm",
-        technique: "Gemengde techniek"
-      },
-      {
-        title: "Vroege Ochtend",
-        imageSrc: "https://images.unsplash.com/photo-1472396961693-142e6e269027?w=400&h=600&fit=crop",
-        description: "Een serene uitdrukking gevangen in het zachte ochtendlicht.",
-        year: "2022",
-        dimensions: "50x70 cm",
-        technique: "Olieverf op doek"
-      },
+    originals: [
       {
         title: "Abstract Gezicht",
         imageSrc: "/images/gezichten/Pomp schilderij.jpg",
         description: "Expressief abstract portret met krachtige penseelstreken en dynamische kleuren.",
         year: "2024",
         dimensions: "60x80 cm",
-        technique: "Acrylverf op doek"
+        technique: "Acrylverf op doek",
+        location: "Café De Pomp"
       },
       {
         title: "Schilderij Richard.jpg",
@@ -97,7 +59,8 @@ const HeroSection = () => {
         description: "",
         year: "",
         dimensions: "",
-        technique: ""
+        technique: "",
+        location: "Café De Pomp"
       },
       {
         title: "Geel oranje blauw.jpg",
@@ -124,39 +87,7 @@ const HeroSection = () => {
         technique: ""
       }
     ],
-    personen: [
-      {
-        title: "Wandelaar",
-        imageSrc: "https://images.unsplash.com/photo-1518495973542-4542c06a5843?w=400&h=600&fit=crop",
-        description: "Een figuur in beweging, vastgelegd in een moment van contemplatie.",
-        year: "2023",
-        dimensions: "70x100 cm",
-        technique: "Acrylverf op doek"
-      },
-      {
-        title: "Rust",
-        imageSrc: "https://images.unsplash.com/photo-1582562124811-c09040d0a901?w=400&h=500&fit=crop",
-        description: "Een moment van stilte en rust in een drukke wereld.",
-        year: "2023",
-        dimensions: "60x80 cm",
-        technique: "Olieverf op doek"
-      },
-      {
-        title: "Ontmoeting",
-        imageSrc: "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?w=400&h=600&fit=crop",
-        description: "Twee figuren in een moment van verbinding en begrip.",
-        year: "2022",
-        dimensions: "80x120 cm",
-        technique: "Gemengde techniek"
-      },
-      {
-        title: "Alleen",
-        imageSrc: "https://images.unsplash.com/photo-1472396961693-142e6e269027?w=400&h=500&fit=crop",
-        description: "Een figuur in landschap, een verhaal van eenzaamheid en kracht.",
-        year: "2022",
-        dimensions: "50x70 cm",
-        technique: "Olieverf op doek"
-      },
+    uniques: [
       {
         title: "Marilyn Monroe.jpg",
         imageSrc: "/images/personen/Marilyn Monroe.jpg",
@@ -164,56 +95,39 @@ const HeroSection = () => {
         year: "",
         dimensions: "",
         technique: ""
+      },
+      {
+        title: "Blend 3.jpg",
+        imageSrc: "/images/expressie/Blend 3.jpg",
+        description: "",
+        year: "",
+        dimensions: "",
+        technique: "",
+        location: "Blend Baarle"
+      },
+      {
+        title: "God is a woman.jpg",
+        imageSrc: "/images/expressie/God is a woman.jpg",
+        description: "",
+        year: "",
+        dimensions: "",
+        technique: "",
+        location: "Blend Baarle"
+      },
+      {
+        title: "The light from a woman.jpg",
+        imageSrc: "/images/expressie/The light from a woman.jpg",
+        description: "",
+        year: "",
+        dimensions: "",
+        technique: ""
       }
-    ],
-    expressie: [
-      {
-        title: "Vreugde",
-        imageSrc: "https://images.unsplash.com/photo-1470813740244-df37b8c1edcb?w=400&h=600&fit=crop",
-        description: "Een explosie van kleuren die pure vreugde uitdrukt.",
-        year: "2023",
-        dimensions: "60x80 cm",
-        technique: "Acrylverf op doek"
-      },
-      {
-        title: "Melancholie",
-        imageSrc: "https://images.unsplash.com/photo-1518495973542-4542c06a5843?w=400&h=500&fit=crop",
-        description: "Zachte tinten die een gevoel van weemoed oproepen.",
-        year: "2023",
-        dimensions: "45x60 cm",
-        technique: "Olieverf op doek"
-      },
-      {
-        title: "Passie",
-        imageSrc: "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?w=400&h=600&fit=crop",
-        description: "Warme kleuren en dynamische penseelstreken vol emotie.",
-        year: "2022",
-        dimensions: "70x90 cm",
-        technique: "Gemengde techniek"
-      },
-      {
-        title: "Sereniteit",
-        imageSrc: "https://images.unsplash.com/photo-1582562124811-c09040d0a901?w=400&h=500&fit=crop",
-        description: "Koele tinten die innerlijke rust en vrede uitstralen.",
-        year: "2022",
-        dimensions: "50x70 cm",
-        technique: "Acrylverf op doek"
-      },
-      {
-        title: "Kracht",
-        imageSrc: "https://images.unsplash.com/photo-1472396961693-142e6e269027?w=400&h=600&fit=crop",
-        description: "Krachtige penseelstreken die vastberadenheid uitdrukken.",
-        year: "2023",
-        dimensions: "80x100 cm",
-        technique: "Olieverf op doek"
-      },
     ]
   };
 
   const categories = [
-    { key: 'gezichten', label: 'Gezichten', artworks: artworks.gezichten },
-    { key: 'personen', label: 'Personen', artworks: artworks.personen },
-    { key: 'expressie', label: 'Expressie', artworks: artworks.expressie }
+    { key: 'originals', label: 'Originals', artworks: artworks.originals },
+    { key: 'uniques', label: 'Uniques', artworks: artworks.uniques }
   ];
 
   const ScrollingRow = ({ 
@@ -248,6 +162,14 @@ const HeroSection = () => {
               <div key={`${category}-${index}`} className="flex-shrink-0">
                 <div className="group cursor-pointer transform transition-all duration-700 hover:scale-105 hover:-translate-y-2">
                   <div className="relative overflow-hidden gallery-shadow transform transition-all duration-500 group-hover:shadow-2xl">
+                    {/* Location Badge */}
+                    {artwork.location && (
+                      <div className="absolute top-3 right-3 z-10 bg-primary text-primary-foreground px-2 py-1 rounded-full text-xs font-cormorant flex items-center gap-1 shadow-lg">
+                        <MapPin size={12} />
+                        {artwork.location}
+                      </div>
+                    )}
+                    
                     <div className="relative h-64 flex items-center justify-center">
                       <img 
                         src={artwork.imageSrc} 
@@ -255,7 +177,7 @@ const HeroSection = () => {
                         className="h-full w-auto object-contain transition-all duration-700 group-hover:scale-105 group-hover:brightness-110"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/10 transition-colors duration-500 flex items-center justify-center">
+                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-500 flex items-center justify-center">
                         <div className="text-white opacity-0 group-hover:opacity-100 transition-all duration-300 transform scale-75 group-hover:scale-100">
                           <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                             <circle cx="11" cy="11" r="8"/>
@@ -305,18 +227,12 @@ const HeroSection = () => {
         <ScrollingRow 
           artworks={categories[0].artworks} 
           category={categories[0].label} 
-          direction="right" 
-          speed={40}
+          direction="left" 
+          speed={30}
         />
         <ScrollingRow 
           artworks={categories[1].artworks} 
           category={categories[1].label} 
-          direction="left" 
-          speed={45}
-        />
-        <ScrollingRow 
-          artworks={categories[2].artworks} 
-          category={categories[2].label} 
           direction="right" 
           speed={35}
         />
@@ -343,19 +259,19 @@ const HeroSection = () => {
       <style>{`
         @keyframes scroll-left {
           0% {
-            transform: translateX(0);
+            transform: translateX(0%);
           }
           100% {
-            transform: translateX(-33.333%);
+            transform: translateX(-100%);
           }
         }
         
         @keyframes scroll-right {
           0% {
-            transform: translateX(-33.333%);
+            transform: translateX(-100%);
           }
           100% {
-            transform: translateX(0);
+            transform: translateX(0%);
           }
         }
         
