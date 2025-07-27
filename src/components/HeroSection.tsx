@@ -386,69 +386,131 @@ const HeroSection = () => {
           </DialogHeader>
           
           {selectedArtwork && (
-            <div className="flex h-full">
-              {/* Image */}
-              <div className="flex-1 flex items-center justify-center bg-black/5 p-8">
-                <img 
-                  src={selectedArtwork.imageSrc} 
-                  alt={selectedArtwork.title}
-                  className="object-contain rounded-lg gallery-shadow animate-fade-in"
-                  style={{ 
-                    maxWidth: 'calc(90vw - 450px)', 
-                    maxHeight: '80vh',
-                    width: 'auto',
-                    height: 'auto'
-                  }}
-                />
-              </div>
-              
-              {/* Details */}
-              <div className="w-[400px] bg-background p-8 overflow-y-auto animate-fade-in" style={{ animationDelay: '0.2s' }}>
-                <div className="space-y-6">
-                  <div>
-                    <h3 className="text-2xl font-playfair font-bold text-foreground mb-2 break-words">{selectedArtwork.title}</h3>
-                    <p className="text-primary font-cormorant text-lg">{selectedArtwork.category}</p>
-                  </div>
-                  
-                  {selectedArtwork.description && (
+            <>
+              {/* Desktop Layout */}
+              <div className="hidden md:flex h-full">
+                {/* Image */}
+                <div className="flex-1 flex items-center justify-center bg-black/5 p-8">
+                  <img 
+                    src={selectedArtwork.imageSrc} 
+                    alt={selectedArtwork.title}
+                    className="object-contain rounded-lg gallery-shadow animate-fade-in"
+                    style={{ 
+                      maxWidth: 'calc(90vw - 450px)', 
+                      maxHeight: '80vh',
+                      width: 'auto',
+                      height: 'auto'
+                    }}
+                  />
+                </div>
+                
+                {/* Details */}
+                <div className="w-[400px] bg-background p-8 overflow-y-auto animate-fade-in" style={{ animationDelay: '0.2s' }}>
+                  <div className="space-y-6">
                     <div>
-                      <h4 className="font-playfair font-medium text-foreground mb-2">Beschrijving</h4>
-                      <p className="text-muted-foreground font-cormorant">{selectedArtwork.description}</p>
+                      <h3 className="text-2xl font-playfair font-bold text-foreground mb-2 break-words">{selectedArtwork.title}</h3>
+                      <p className="text-primary font-cormorant text-lg">{selectedArtwork.category}</p>
                     </div>
-                  )}
-                  
-                  <div className="space-y-3">
-                    {selectedArtwork.year && (
+                    
+                    {selectedArtwork.description && (
                       <div>
-                        <span className="font-playfair font-medium text-foreground">Jaar: </span>
-                        <span className="text-muted-foreground font-cormorant">{selectedArtwork.year}</span>
+                        <h4 className="font-playfair font-medium text-foreground mb-2">Beschrijving</h4>
+                        <p className="text-muted-foreground font-cormorant">{selectedArtwork.description}</p>
                       </div>
                     )}
                     
-                    {selectedArtwork.dimensions && (
-                      <div>
-                        <span className="font-playfair font-medium text-foreground">Afmetingen: </span>
-                        <span className="text-muted-foreground font-cormorant">{selectedArtwork.dimensions}</span>
-                      </div>
-                    )}
-                    
-                    {selectedArtwork.technique && (
-                      <div>
-                        <span className="font-playfair font-medium text-foreground">Techniek: </span>
-                        <span className="text-muted-foreground font-cormorant">{selectedArtwork.technique}</span>
-                      </div>
-                    )}
-                    
-                    {selectedArtwork.location && (
-                      <div>
-                        <span className="font-playfair font-medium text-foreground">Locatie: </span>
-                        <span className="text-muted-foreground font-cormorant">{selectedArtwork.location}</span>
-                      </div>
-                    )}
+                    <div className="space-y-3">
+                      {selectedArtwork.year && (
+                        <div>
+                          <span className="font-playfair font-medium text-foreground">Jaar: </span>
+                          <span className="text-muted-foreground font-cormorant">{selectedArtwork.year}</span>
+                        </div>
+                      )}
+                      
+                      {selectedArtwork.dimensions && (
+                        <div>
+                          <span className="font-playfair font-medium text-foreground">Afmetingen: </span>
+                          <span className="text-muted-foreground font-cormorant">{selectedArtwork.dimensions}</span>
+                        </div>
+                      )}
+                      
+                      {selectedArtwork.technique && (
+                        <div>
+                          <span className="font-playfair font-medium text-foreground">Techniek: </span>
+                          <span className="text-muted-foreground font-cormorant">{selectedArtwork.technique}</span>
+                        </div>
+                      )}
+                      
+                      {selectedArtwork.location && (
+                        <div>
+                          <span className="font-playfair font-medium text-foreground">Locatie: </span>
+                          <span className="text-muted-foreground font-cormorant">{selectedArtwork.location}</span>
+                        </div>
+                      )}
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
+
+              {/* Mobile Layout */}
+              <div className="md:hidden flex flex-col h-full">
+                {/* Image - Takes most of the space */}
+                <div className="flex-1 flex items-center justify-center bg-black/5 p-4">
+                  <img 
+                    src={selectedArtwork.imageSrc} 
+                    alt={selectedArtwork.title}
+                    className="object-contain w-full h-full animate-fade-in"
+                  />
+                </div>
+                
+                {/* Details - Compact bottom panel */}
+                <div className="bg-background p-4 border-t max-h-[30vh] overflow-y-auto animate-fade-in" style={{ animationDelay: '0.2s' }}>
+                  <div className="space-y-3">
+                    <div>
+                      <h3 className="text-xl font-playfair font-bold text-foreground mb-1 break-words">{selectedArtwork.title}</h3>
+                      <p className="text-primary font-cormorant">{selectedArtwork.category}</p>
+                    </div>
+                    
+                    {selectedArtwork.description && (
+                      <div>
+                        <h4 className="font-playfair font-medium text-foreground mb-1 text-sm">Beschrijving</h4>
+                        <p className="text-muted-foreground font-cormorant text-sm">{selectedArtwork.description}</p>
+                      </div>
+                    )}
+                    
+                    <div className="grid grid-cols-2 gap-2 text-sm">
+                      {selectedArtwork.year && (
+                        <div>
+                          <span className="font-playfair font-medium text-foreground">Jaar: </span>
+                          <span className="text-muted-foreground font-cormorant">{selectedArtwork.year}</span>
+                        </div>
+                      )}
+                      
+                      {selectedArtwork.dimensions && (
+                        <div>
+                          <span className="font-playfair font-medium text-foreground">Afmetingen: </span>
+                          <span className="text-muted-foreground font-cormorant">{selectedArtwork.dimensions}</span>
+                        </div>
+                      )}
+                      
+                      {selectedArtwork.technique && (
+                        <div className="col-span-2">
+                          <span className="font-playfair font-medium text-foreground">Techniek: </span>
+                          <span className="text-muted-foreground font-cormorant">{selectedArtwork.technique}</span>
+                        </div>
+                      )}
+                      
+                      {selectedArtwork.location && (
+                        <div className="col-span-2">
+                          <span className="font-playfair font-medium text-foreground">Locatie: </span>
+                          <span className="text-muted-foreground font-cormorant">{selectedArtwork.location}</span>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </>
           )}
         </DialogContent>
       </Dialog>

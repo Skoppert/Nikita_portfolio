@@ -37,7 +37,7 @@ const Header = () => {
               onClick={() => scrollToSection('over-mij')}
               className="text-foreground hover:text-primary transition-colors duration-200 font-cormorant text-lg font-medium"
             >
-              Over mij
+              Achter het doek
             </button>
             <button
               onClick={() => scrollToSection('gallerij')}
@@ -84,7 +84,7 @@ const Header = () => {
                 onClick={() => scrollToSection('over-mij')}
                 className="text-left text-foreground hover:text-primary transition-colors duration-200 font-cormorant text-lg font-medium"
               >
-                Over mij
+                Achter het doek
               </button>
               <button
                 onClick={() => scrollToSection('gallerij')}

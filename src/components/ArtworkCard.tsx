@@ -82,7 +82,8 @@ const ArtworkCard = ({
             </Button>
           </DialogHeader>
           
-          <div className="flex h-full">
+          {/* Desktop Layout */}
+          <div className="hidden md:flex h-full">
             {/* Image */}
             <div className="flex-1 flex items-center justify-center bg-black/5 p-8">
               <img 
@@ -137,6 +138,65 @@ const ArtworkCard = ({
                   
                   {location && (
                     <div>
+                      <span className="font-playfair font-medium text-foreground">Locatie: </span>
+                      <span className="text-muted-foreground font-cormorant">{location}</span>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Mobile Layout */}
+          <div className="md:hidden flex flex-col h-full">
+            {/* Image - Takes most of the space */}
+            <div className="flex-1 flex items-center justify-center bg-black/5 p-4">
+              <img 
+                src={imageSrc} 
+                alt={title}
+                className="object-contain w-full h-full animate-fade-in"
+              />
+            </div>
+            
+            {/* Details - Compact bottom panel */}
+            <div className="bg-background p-4 border-t max-h-[30vh] overflow-y-auto animate-fade-in" style={{ animationDelay: '0.2s' }}>
+              <div className="space-y-3">
+                <div>
+                  <h3 className="text-xl font-playfair font-bold text-foreground mb-1 break-words">{title}</h3>
+                  <p className="text-primary font-cormorant">{category}</p>
+                </div>
+                
+                {description && (
+                  <div>
+                    <h4 className="font-playfair font-medium text-foreground mb-1 text-sm">Beschrijving</h4>
+                    <p className="text-muted-foreground font-cormorant text-sm">{description}</p>
+                  </div>
+                )}
+                
+                <div className="grid grid-cols-2 gap-2 text-sm">
+                  {year && (
+                    <div>
+                      <span className="font-playfair font-medium text-foreground">Jaar: </span>
+                      <span className="text-muted-foreground font-cormorant">{year}</span>
+                    </div>
+                  )}
+                  
+                  {dimensions && (
+                    <div>
+                      <span className="font-playfair font-medium text-foreground">Afmetingen: </span>
+                      <span className="text-muted-foreground font-cormorant">{dimensions}</span>
+                    </div>
+                  )}
+                  
+                  {technique && (
+                    <div className="col-span-2">
+                      <span className="font-playfair font-medium text-foreground">Techniek: </span>
+                      <span className="text-muted-foreground font-cormorant">{technique}</span>
+                    </div>
+                  )}
+                  
+                  {location && (
+                    <div className="col-span-2">
                       <span className="font-playfair font-medium text-foreground">Locatie: </span>
                       <span className="text-muted-foreground font-cormorant">{location}</span>
                     </div>

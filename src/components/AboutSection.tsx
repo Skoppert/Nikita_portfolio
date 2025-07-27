@@ -16,7 +16,7 @@ const AboutSection = () => {
             <div className="space-y-8 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
               <div>
                 <h2 className="text-4xl md:text-5xl font-playfair font-bold text-foreground mb-6 animate-slide-in-left">
-                  Over Nikita Beekhof
+                  Achter het doek
                 </h2>
                 <div className="w-16 h-1 bg-primary mb-8 animate-width-expand"></div>
               </div>
