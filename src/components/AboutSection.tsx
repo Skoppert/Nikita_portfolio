@@ -39,6 +39,29 @@ const AboutSection = () => {
                   verteld moeten worden. Ik werk voornamelijk met acrylverf en olieverf, technieken die me 
                   de vrijheid geven om zowel subtiele details als krachtige emoties uit te drukken.
                 </p>
+                
+                <p className="text-muted-foreground animate-fade-in-up" style={{ animationDelay: '1.0s' }}>
+                  Wat begon als een pure passie is uitgegroeid tot mijn levensdoel. Het maakt me ontzettend 
+                  gelukkig wanneer mijn werk mensen raakt, wanneer ze een verbinding voelen met wat ik heb 
+                  gecreëerd. En als iemand besluit om een van mijn werken een plekje in hun leven te geven, 
+                  dan voelt dat als het mooiste compliment dat ik kan krijgen.
+                </p>
+                
+                <p className="text-muted-foreground animate-fade-in-up" style={{ animationDelay: '1.2s' }}>
+                  Elk schilderij dat ik maak is uniek - net als de persoon of ruimte waar het uiteindelijk 
+                  komt te hangen. Ik werk graag samen met mensen om iets te creëren dat perfect past bij 
+                  hun verhaal, hun ruimte, hun gevoel. Want kunst moet leven, moet betekenis hebben.
+                </p>
+                
+                <p className="text-muted-foreground animate-fade-in-up" style={{ animationDelay: '1.4s' }}>
+                  Bewust kies ik ervoor om geen reprodukties of prints te maken van mijn werk. Elk schilderij 
+                  draagt een verhaal in zich, een emotie die ontstaan is op een specifiek moment in tijd. 
+                  Het mooiste van kunst is dat er maar één persoon ter wereld is die dat specifieke werk kan 
+                  bezitten - dat maakt de connectie tussen kunstwerk en eigenaar zo bijzonder. Wanneer je dit 
+                  vermenigvuldigt, verdwijnt die magie en die exclusieve band. Een schilderij is als een 
+                  liefdesbrief die maar aan één persoon geschreven kan worden, een geheim dat maar met één 
+                  iemand gedeeld kan worden.
+                </p>
               </div>
             </div>
             

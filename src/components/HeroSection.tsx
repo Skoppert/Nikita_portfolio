@@ -2,8 +2,19 @@
 import { useEffect, useState } from 'react';
 import ArtworkCard from './ArtworkCard';
 import { MapPin } from 'lucide-react';
+import { Dialog, DialogContent, DialogHeader } from '@/components/ui/dialog';
+import { Button } from '@/components/ui/button';
+import { X } from 'lucide-react';
 
 const HeroSection = () => {
+  const [selectedArtwork, setSelectedArtwork] = useState<Artwork | null>(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleArtworkClick = (artwork: Artwork, category: string) => {
+    setSelectedArtwork({ ...artwork, category });
+    setIsModalOpen(true);
+  };
+
   // Definieer een type voor een kunstwerk
   type Artwork = {
     title: string;
@@ -13,6 +24,7 @@ const HeroSection = () => {
     dimensions: string;
     technique: string;
     location?: string;
+    category?: string;
   };
 
   const artworks: {
@@ -120,6 +132,14 @@ const HeroSection = () => {
         technique: ""
       },
       {
+        title: "Peaky Blinder",
+        imageSrc: "/images/personen/Peaky Blinder.jpg",
+        description: "",
+        year: "",
+        dimensions: "",
+        technique: ""
+      },
+      {
         title: "Flow",
         imageSrc: "/images/expressie/Flow.jpg",
         description: "",
@@ -175,24 +195,50 @@ const HeroSection = () => {
   }) => {
     // Duplicate artworks for seamless scrolling
     const duplicatedArtworks = [...artworks, ...artworks, ...artworks];
+    const [isPaused, setIsPaused] = useState(false);
     
     return (
       <div className="relative overflow-hidden py-6">
-        <h3 className="text-2xl font-playfair font-bold text-foreground mb-6 px-4">
-          {category}
-        </h3>
-        <div className="relative overflow-hidden">
+        <div className="flex justify-between items-center mb-6 px-4">
+          <h3 className="text-2xl font-playfair font-bold text-foreground">
+            {category}
+          </h3>
+          <div className="flex items-center gap-2 text-muted-foreground text-sm">
+            <span className="hidden md:block">← Swipe om te scrollen →</span>
+            <div className="w-2 h-2 bg-primary/30 rounded-full animate-pulse"></div>
+          </div>
+        </div>
+        <div 
+          className="relative overflow-x-auto scrollbar-hide cursor-grab active:cursor-grabbing"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+          onTouchStart={() => setIsPaused(true)}
+          onTouchEnd={() => setIsPaused(false)}
+          onWheel={(e) => {
+            e.currentTarget.scrollLeft += e.deltaY;
+            setIsPaused(true);
+            setTimeout(() => setIsPaused(false), 2000);
+          }}
+          style={{
+            scrollbarWidth: 'none',
+            msOverflowStyle: 'none'
+          }}
+        >
           <div 
             className={`flex gap-6 items-center ${direction === 'left' ? 'animate-scroll-left' : 'animate-scroll-right'}`}
             style={{
               animationDuration: `${speed}s`,
               animationTimingFunction: 'linear',
-              animationIterationCount: 'infinite'
+              animationIterationCount: 'infinite',
+              animationPlayState: isPaused ? 'paused' : 'running'
             }}
           >
             {duplicatedArtworks.map((artwork, index) => (
               <div key={`${category}-${index}`} className="flex-shrink-0">
-                <div className="group cursor-pointer transform transition-all duration-700 hover:scale-105 hover:-translate-y-2">
+                <div 
+                  className="group cursor-pointer transform transition-all duration-700 hover:scale-105 hover:-translate-y-2"
+                  onClick={() => handleArtworkClick(artwork, category)}
+                >
                   <div className="relative overflow-hidden gallery-shadow transform transition-all duration-500 group-hover:shadow-2xl">
                     {/* Location Badge */}
                     {artwork.location && (
@@ -314,7 +360,98 @@ const HeroSection = () => {
         .animate-scroll-right {
           animation: scroll-right linear infinite;
         }
+        
+        .scrollbar-hide {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+        
+        .scrollbar-hide::-webkit-scrollbar {
+          display: none;
+        }
       `}</style>
+
+      {/* Modal for artwork details */}
+      <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
+        <DialogContent className="max-w-7xl w-[95vw] h-[95vh] p-0 overflow-hidden animate-scale-in">
+          <DialogHeader className="absolute top-4 right-4 z-10">
+            <Button
+              variant="ghost"
+              size="icon"
+              className="bg-white/90 hover:bg-white text-foreground rounded-full transition-all duration-300 hover:scale-110"
+              onClick={() => setIsModalOpen(false)}
+            >
+              <X size={20} />
+            </Button>
+          </DialogHeader>
+          
+          {selectedArtwork && (
+            <div className="flex h-full">
+              {/* Image */}
+              <div className="flex-1 flex items-center justify-center bg-black/5 p-8">
+                <img 
+                  src={selectedArtwork.imageSrc} 
+                  alt={selectedArtwork.title}
+                  className="object-contain rounded-lg gallery-shadow animate-fade-in"
+                  style={{ 
+                    maxWidth: 'calc(90vw - 450px)', 
+                    maxHeight: '80vh',
+                    width: 'auto',
+                    height: 'auto'
+                  }}
+                />
+              </div>
+              
+              {/* Details */}
+              <div className="w-[400px] bg-background p-8 overflow-y-auto animate-fade-in" style={{ animationDelay: '0.2s' }}>
+                <div className="space-y-6">
+                  <div>
+                    <h3 className="text-2xl font-playfair font-bold text-foreground mb-2 break-words">{selectedArtwork.title}</h3>
+                    <p className="text-primary font-cormorant text-lg">{selectedArtwork.category}</p>
+                  </div>
+                  
+                  {selectedArtwork.description && (
+                    <div>
+                      <h4 className="font-playfair font-medium text-foreground mb-2">Beschrijving</h4>
+                      <p className="text-muted-foreground font-cormorant">{selectedArtwork.description}</p>
+                    </div>
+                  )}
+                  
+                  <div className="space-y-3">
+                    {selectedArtwork.year && (
+                      <div>
+                        <span className="font-playfair font-medium text-foreground">Jaar: </span>
+                        <span className="text-muted-foreground font-cormorant">{selectedArtwork.year}</span>
+                      </div>
+                    )}
+                    
+                    {selectedArtwork.dimensions && (
+                      <div>
+                        <span className="font-playfair font-medium text-foreground">Afmetingen: </span>
+                        <span className="text-muted-foreground font-cormorant">{selectedArtwork.dimensions}</span>
+                      </div>
+                    )}
+                    
+                    {selectedArtwork.technique && (
+                      <div>
+                        <span className="font-playfair font-medium text-foreground">Techniek: </span>
+                        <span className="text-muted-foreground font-cormorant">{selectedArtwork.technique}</span>
+                      </div>
+                    )}
+                    
+                    {selectedArtwork.location && (
+                      <div>
+                        <span className="font-playfair font-medium text-foreground">Locatie: </span>
+                        <span className="text-muted-foreground font-cormorant">{selectedArtwork.location}</span>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </div>
+            </div>
+          )}
+        </DialogContent>
+      </Dialog>
     </section>
   );
 };

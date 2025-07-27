@@ -121,17 +121,16 @@ const GallerySection = () => {
         technique: ""
       },
       {
-        title: "Sleeping Beauty",
-        imageSrc: "/images/expressie/Sleeping Beauty.jpg",
+        title: "Peaky Blinder",
+        imageSrc: "/images/personen/Peaky Blinder.jpg",
         description: "",
         year: "",
         dimensions: "",
-        technique: "",
-        location: "Blend Baarle"
+        technique: ""
       },
       {
-        title: "God is a woman",
-        imageSrc: "/images/expressie/God is a woman.jpg",
+        title: "Sleeping Beauty",
+        imageSrc: "/images/expressie/Sleeping Beauty.jpg",
         description: "",
         year: "",
         dimensions: "",
@@ -198,32 +197,59 @@ const GallerySection = () => {
         {/* Gallery Grid with side-by-side layout for last two items */}
         {activeCategory === 'uniques' ? (
           <div className="space-y-8">
-            {/* First part - regular grid for first 3 items */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {artworks[activeCategory].slice(0, 3).map((artwork: Artwork, index) => (
+            {/* First part - custom layout with different sizes */}
+            <div className="flex gap-6 items-start justify-center">
+              {/* Peaky Blinder - small */}
+              <div className="w-1/4 animate-fade-in-scale" style={{ animationDelay: '0.1s', animationFillMode: 'both' }}>
                 <ArtworkCard
-                  key={`${activeCategory}-${artwork.imageSrc}-${index}`}
-                  title={artwork.title}
+                  key={`${activeCategory}-peaky-blinder`}
+                  title="Peaky Blinder"
                   category={categories.find(c => c.key === activeCategory)?.label || ''}
-                  imageSrc={artwork.imageSrc}
-                  description={artwork.description}
-                  year={artwork.year}
-                  dimensions={artwork.dimensions}
-                  technique={artwork.technique}
-                  location={artwork.location}
-                  className="transition-all duration-500 hover:scale-105 hover:rotate-1 animate-fade-in-scale"
-                  style={{ 
-                    animationDelay: `${index * 0.1}s`,
-                    animationFillMode: 'both'
-                  }}
+                  imageSrc="/images/personen/Peaky Blinder.jpg"
+                  description=""
+                  year=""
+                  dimensions=""
+                  technique=""
+                  className="transition-all duration-500 hover:scale-105 hover:rotate-1"
                 />
-              ))}
+              </div>
+              
+              {/* Sleeping Beauty - large, in the middle */}
+              <div className="w-2/5 animate-fade-in-scale" style={{ animationDelay: '0.2s', animationFillMode: 'both' }}>
+                <ArtworkCard
+                  key={`${activeCategory}-sleeping-beauty`}
+                  title="Sleeping Beauty"
+                  category={categories.find(c => c.key === activeCategory)?.label || ''}
+                  imageSrc="/images/expressie/Sleeping Beauty.jpg"
+                  description=""
+                  year=""
+                  dimensions=""
+                  technique=""
+                  location="Blend Baarle"
+                  className="transition-all duration-500 hover:scale-105 hover:rotate-1"
+                />
+              </div>
+              
+              {/* Marilyn Monroe - small */}
+              <div className="w-1/4 animate-fade-in-scale" style={{ animationDelay: '0.3s', animationFillMode: 'both' }}>
+                <ArtworkCard
+                  key={`${activeCategory}-marilyn-monroe`}
+                  title="Marilyn Monroe"
+                  category={categories.find(c => c.key === activeCategory)?.label || ''}
+                  imageSrc="/images/personen/Marilyn Monroe.jpg"
+                  description=""
+                  year=""
+                  dimensions=""
+                  technique=""
+                  className="transition-all duration-500 hover:scale-105 hover:rotate-1"
+                />
+              </div>
             </div>
             
-            {/* Second part - The light from a woman (small) + Blend 2 (large) */}
-            <div className="flex gap-6 items-start">
-              {/* The light from a woman - smaller */}
-              <div className="w-1/3 animate-fade-in-scale" style={{ animationDelay: '0.4s', animationFillMode: 'both' }}>
+            {/* Second part - Three items with custom sizing, centered */}
+            <div className="flex gap-6 items-start justify-center">
+              {/* The light from a woman - smallest */}
+              <div className="w-1/4 animate-fade-in-scale" style={{ animationDelay: '0.4s', animationFillMode: 'both' }}>
                 <ArtworkCard
                   key={`${activeCategory}-the-light-from-a-woman`}
                   title="The light from a woman"
@@ -237,10 +263,26 @@ const GallerySection = () => {
                 />
               </div>
               
-              {/* Blend 2 - smaller size */}
-              <div className="w-1/2 animate-fade-in-scale" style={{ animationDelay: '0.5s', animationFillMode: 'both' }}>
+              {/* God is a woman - replacing small Sleeping Beauty */}
+              <div className="w-1/4 animate-fade-in-scale" style={{ animationDelay: '0.5s', animationFillMode: 'both' }}>
                 <ArtworkCard
-                  key={`${activeCategory}-blend-2`}
+                  key={`${activeCategory}-god-is-a-woman`}
+                  title="God is a woman"
+                  category={categories.find(c => c.key === activeCategory)?.label || ''}
+                  imageSrc="/images/expressie/God is a woman.jpg"
+                  description=""
+                  year=""
+                  dimensions=""
+                  technique=""
+                  location="Blend Baarle"
+                  className="transition-all duration-500 hover:scale-105 hover:rotate-1"
+                />
+              </div>
+              
+              {/* Flow - smaller */}
+              <div className="w-1/4 animate-fade-in-scale" style={{ animationDelay: '0.6s', animationFillMode: 'both' }}>
+                <ArtworkCard
+                  key={`${activeCategory}-flow`}
                   title="Flow"
                   category={categories.find(c => c.key === activeCategory)?.label || ''}
                   imageSrc="/images/expressie/Flow.jpg"

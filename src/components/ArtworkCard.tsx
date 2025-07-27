@@ -70,7 +70,7 @@ const ArtworkCard = ({
       </div>
 
       <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
-        <DialogContent className="max-w-6xl w-full h-full max-h-[90vh] p-0 overflow-hidden animate-scale-in">
+        <DialogContent className="max-w-7xl w-[95vw] h-[95vh] p-0 overflow-hidden animate-scale-in">
           <DialogHeader className="absolute top-4 right-4 z-10">
             <Button
               variant="ghost"
@@ -88,15 +88,21 @@ const ArtworkCard = ({
               <img 
                 src={imageSrc} 
                 alt={title}
-                className="max-w-full max-h-full object-contain rounded-lg gallery-shadow animate-fade-in"
+                className="object-contain rounded-lg gallery-shadow animate-fade-in"
+                style={{ 
+                  maxWidth: 'calc(90vw - 450px)', 
+                  maxHeight: '80vh',
+                  width: 'auto',
+                  height: 'auto'
+                }}
               />
             </div>
             
             {/* Details */}
-            <div className="w-80 bg-background p-8 overflow-y-auto animate-fade-in" style={{ animationDelay: '0.2s' }}>
+            <div className="w-[400px] bg-background p-8 overflow-y-auto animate-fade-in" style={{ animationDelay: '0.2s' }}>
               <div className="space-y-6">
                 <div>
-                  <h3 className="text-2xl font-playfair font-bold text-foreground mb-2">{title}</h3>
+                  <h3 className="text-2xl font-playfair font-bold text-foreground mb-2 break-words">{title}</h3>
                   <p className="text-primary font-cormorant text-lg">{category}</p>
                 </div>
                 
