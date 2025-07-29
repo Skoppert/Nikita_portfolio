@@ -2,9 +2,12 @@
 import { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { useLanguage } from '@/contexts/LanguageContext';
+import LanguageToggle from './LanguageToggle';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const { t } = useLanguage();
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
@@ -26,48 +29,54 @@ const Header = () => {
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex space-x-8">
-            <button
-              onClick={() => scrollToSection('home')}
-              className="text-foreground hover:text-primary transition-colors duration-200 font-cormorant text-lg"
-            >
-              Home
-            </button>
-            <button
-              onClick={() => scrollToSection('over-mij')}
-              className="text-foreground hover:text-primary transition-colors duration-200 font-cormorant text-lg font-medium"
-            >
-              Achter het doek
-            </button>
-            <button
-              onClick={() => scrollToSection('gallerij')}
-              className="text-foreground hover:text-primary transition-colors duration-200 font-cormorant text-lg"
-            >
-              Gallerij
-            </button>
-            <button
-              onClick={() => scrollToSection('exposities')}
-              className="text-foreground hover:text-primary transition-colors duration-200 font-cormorant text-lg"
-            >
-              Exposities
-            </button>
-            <button
-              onClick={() => scrollToSection('contact')}
-              className="text-foreground hover:text-primary transition-colors duration-200 font-cormorant text-lg"
-            >
-              Contact
-            </button>
-          </nav>
+          <div className="hidden md:flex items-center space-x-8">
+            <nav className="flex space-x-8">
+              <button
+                onClick={() => scrollToSection('home')}
+                className="text-foreground hover:text-primary transition-colors duration-200 font-cormorant text-lg"
+              >
+                {t('nav.home')}
+              </button>
+              <button
+                onClick={() => scrollToSection('over-mij')}
+                className="text-foreground hover:text-primary transition-colors duration-200 font-cormorant text-lg font-medium"
+              >
+                {t('nav.about')}
+              </button>
+              <button
+                onClick={() => scrollToSection('gallerij')}
+                className="text-foreground hover:text-primary transition-colors duration-200 font-cormorant text-lg"
+              >
+                {t('nav.gallery')}
+              </button>
+              <button
+                onClick={() => scrollToSection('exposities')}
+                className="text-foreground hover:text-primary transition-colors duration-200 font-cormorant text-lg"
+              >
+                {t('nav.exhibitions')}
+              </button>
+              <button
+                onClick={() => scrollToSection('contact')}
+                className="text-foreground hover:text-primary transition-colors duration-200 font-cormorant text-lg"
+              >
+                {t('nav.contact')}
+              </button>
+            </nav>
+            
+            <LanguageToggle />
+          </div>
 
-          {/* Mobile menu button */}
-          <Button
-            variant="ghost"
-            size="icon"
-            className="md:hidden"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-          >
-            {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-          </Button>
+          {/* Mobile menu button and language toggle */}
+          <div className="md:hidden flex items-center space-x-2">
+            <LanguageToggle />
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+            >
+              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
+            </Button>
+          </div>
         </div>
 
         {/* Mobile Navigation */}
@@ -78,31 +87,31 @@ const Header = () => {
                 onClick={() => scrollToSection('home')}
                 className="text-left text-foreground hover:text-primary transition-colors duration-200 font-cormorant text-lg"
               >
-                Home
+                {t('nav.home')}
               </button>
               <button
                 onClick={() => scrollToSection('over-mij')}
                 className="text-left text-foreground hover:text-primary transition-colors duration-200 font-cormorant text-lg font-medium"
               >
-                Achter het doek
+                {t('nav.about')}
               </button>
               <button
                 onClick={() => scrollToSection('gallerij')}
                 className="text-left text-foreground hover:text-primary transition-colors duration-200 font-cormorant text-lg"
               >
-                Gallerij
+                {t('nav.gallery')}
               </button>
               <button
                 onClick={() => scrollToSection('exposities')}
                 className="text-left text-foreground hover:text-primary transition-colors duration-200 font-cormorant text-lg"
               >
-                Exposities
+                {t('nav.exhibitions')}
               </button>
               <button
                 onClick={() => scrollToSection('contact')}
                 className="text-left text-foreground hover:text-primary transition-colors duration-200 font-cormorant text-lg"
               >
-                Contact
+                {t('nav.contact')}
               </button>
             </div>
           </nav>

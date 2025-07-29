@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react';
 import ArtworkCard from './ArtworkCard';
 import { Button } from '@/components/ui/button';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const GallerySection = () => {
   const [activeCategory, setActiveCategory] = useState<'originals' | 'uniques'>('originals');
+  const { t } = useLanguage();
 
   // Definieer een type voor een kunstwerk
   type Artwork = {
@@ -149,8 +151,8 @@ const GallerySection = () => {
   };
 
   const categories = [
-    { key: 'originals', label: 'Originals', description: 'Authentieke portretten en gezichten' },
-    { key: 'uniques', label: 'Uniques', description: 'Unieke expressieve en persoonlijke kunstwerken' }
+    { key: 'originals', label: t('gallery.originals'), description: t('gallery.originals.desc') },
+    { key: 'uniques', label: t('gallery.uniques'), description: t('gallery.uniques.desc') }
   ];
 
   return (
@@ -158,11 +160,11 @@ const GallerySection = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-playfair font-bold text-foreground mb-6 animate-bounce-in">
-            Schilderijen Collectie
+            {t('gallery.title')}
           </h2>
           <div className="w-16 h-1 bg-primary mx-auto mb-8 animate-width-expand" style={{ animationDelay: '0.3s' }}></div>
           <p className="text-lg text-muted-foreground font-cormorant max-w-2xl mx-auto animate-fade-in-up" style={{ animationDelay: '0.5s' }}>
-            Ontdek een wereld van kleuren, emoties en expressie door deze collectie schilderijen, onderverdeeld in twee categorieën.
+            {t('gallery.subtitle')}
           </p>
         </div>
 

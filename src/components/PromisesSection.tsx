@@ -1,26 +1,29 @@
 import { Award, Globe, MapPin, Sparkles } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const PromisesSection = () => {
+  const { t } = useLanguage();
+  
   const promises = [
     {
       icon: Award,
-      title: "Certificaten",
-      description: "Elk kunstwerk wordt geleverd met een certificaat van echtheid"
+      title: t('promises.certificates'),
+      description: t('promises.certificates.desc')
     },
     {
       icon: Sparkles,
-      title: "Uniciteit",
-      description: "Geen prints en geen replica's"
+      title: t('promises.uniqueness'),
+      description: t('promises.uniqueness.desc')
     },
     {
       icon: Globe,
-      title: "Wereldwijde verzending",
-      description: "Veilige verzending naar elke locatie wereldwijd"
+      title: t('promises.shipping'),
+      description: t('promises.shipping.desc')
     },
     {
       icon: MapPin,
-      title: "Consultaties aan huis",
-      description: "Persoonlijke adviesgesprekken bij u thuis"
+      title: t('promises.consultations'),
+      description: t('promises.consultations.desc')
     }
   ];
 
@@ -29,7 +32,7 @@ const PromisesSection = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-playfair font-bold text-foreground mb-6 animate-fade-in">
-            Het Aanbod
+            {t('promises.title')}
           </h2>
           <div className="w-16 h-1 bg-primary mx-auto mb-8 animate-fade-in" style={{ animationDelay: '0.2s' }}></div>
         </div>

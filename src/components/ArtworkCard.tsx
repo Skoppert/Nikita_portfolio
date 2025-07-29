@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { X, ZoomIn, MapPin } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 interface ArtworkCardProps {
   title: string;
@@ -30,6 +31,7 @@ const ArtworkCard = ({
   style = {}
 }: ArtworkCardProps) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const { t } = useLanguage();
 
   return (
     <>
@@ -109,7 +111,7 @@ const ArtworkCard = ({
                 
                 {description && (
                   <div>
-                    <h4 className="font-playfair font-medium text-foreground mb-2">Beschrijving</h4>
+                    <h4 className="font-playfair font-medium text-foreground mb-2">{t('modal.description')}</h4>
                     <p className="text-muted-foreground font-cormorant">{description}</p>
                   </div>
                 )}
@@ -117,28 +119,28 @@ const ArtworkCard = ({
                 <div className="space-y-3">
                   {year && (
                     <div>
-                      <span className="font-playfair font-medium text-foreground">Jaar: </span>
+                      <span className="font-playfair font-medium text-foreground">{t('modal.year')}: </span>
                       <span className="text-muted-foreground font-cormorant">{year}</span>
                     </div>
                   )}
                   
                   {dimensions && (
                     <div>
-                      <span className="font-playfair font-medium text-foreground">Afmetingen: </span>
+                      <span className="font-playfair font-medium text-foreground">{t('modal.dimensions')}: </span>
                       <span className="text-muted-foreground font-cormorant">{dimensions}</span>
                     </div>
                   )}
                   
                   {technique && (
                     <div>
-                      <span className="font-playfair font-medium text-foreground">Techniek: </span>
+                      <span className="font-playfair font-medium text-foreground">{t('modal.technique')}: </span>
                       <span className="text-muted-foreground font-cormorant">{technique}</span>
                     </div>
                   )}
                   
                   {location && (
                     <div>
-                      <span className="font-playfair font-medium text-foreground">Locatie: </span>
+                      <span className="font-playfair font-medium text-foreground">{t('modal.location')}: </span>
                       <span className="text-muted-foreground font-cormorant">{location}</span>
                     </div>
                   )}
@@ -168,7 +170,7 @@ const ArtworkCard = ({
                 
                 {description && (
                   <div>
-                    <h4 className="font-playfair font-medium text-foreground mb-1 text-sm">Beschrijving</h4>
+                    <h4 className="font-playfair font-medium text-foreground mb-1 text-sm">{t('modal.description')}</h4>
                     <p className="text-muted-foreground font-cormorant text-sm">{description}</p>
                   </div>
                 )}
@@ -176,28 +178,28 @@ const ArtworkCard = ({
                 <div className="grid grid-cols-2 gap-2 text-sm">
                   {year && (
                     <div>
-                      <span className="font-playfair font-medium text-foreground">Jaar: </span>
+                      <span className="font-playfair font-medium text-foreground">{t('modal.year')}: </span>
                       <span className="text-muted-foreground font-cormorant">{year}</span>
                     </div>
                   )}
                   
                   {dimensions && (
                     <div>
-                      <span className="font-playfair font-medium text-foreground">Afmetingen: </span>
+                      <span className="font-playfair font-medium text-foreground">{t('modal.dimensions')}: </span>
                       <span className="text-muted-foreground font-cormorant">{dimensions}</span>
                     </div>
                   )}
                   
                   {technique && (
                     <div className="col-span-2">
-                      <span className="font-playfair font-medium text-foreground">Techniek: </span>
+                      <span className="font-playfair font-medium text-foreground">{t('modal.technique')}: </span>
                       <span className="text-muted-foreground font-cormorant">{technique}</span>
                     </div>
                   )}
                   
                   {location && (
                     <div className="col-span-2">
-                      <span className="font-playfair font-medium text-foreground">Locatie: </span>
+                      <span className="font-playfair font-medium text-foreground">{t('modal.location')}: </span>
                       <span className="text-muted-foreground font-cormorant">{location}</span>
                     </div>
                   )}

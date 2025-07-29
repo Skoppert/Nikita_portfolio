@@ -5,10 +5,12 @@ import { MapPin } from 'lucide-react';
 import { Dialog, DialogContent, DialogHeader } from '@/components/ui/dialog';
 import { Button } from '@/components/ui/button';
 import { X } from 'lucide-react';
+import { useLanguage } from '@/contexts/LanguageContext';
 
 const HeroSection = () => {
   const [selectedArtwork, setSelectedArtwork] = useState<Artwork | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const { t } = useLanguage();
 
   const handleArtworkClick = (artwork: Artwork, category: string) => {
     setSelectedArtwork({ ...artwork, category });
@@ -178,8 +180,8 @@ const HeroSection = () => {
   };
 
   const categories = [
-    { key: 'originals', label: 'Originals', artworks: artworks.originals },
-    { key: 'uniques', label: 'Uniques', artworks: artworks.uniques }
+    { key: 'originals', label: t('gallery.originals'), artworks: artworks.originals },
+    { key: 'uniques', label: t('gallery.uniques'), artworks: artworks.uniques }
   ];
 
   const ScrollingRow = ({ 
@@ -204,7 +206,7 @@ const HeroSection = () => {
             {category}
           </h3>
           <div className="flex items-center gap-2 text-muted-foreground text-sm">
-            <span className="hidden md:block">← Swipe om te scrollen →</span>
+            <span className="hidden md:block">{t('hero.swipe')}</span>
             <div className="w-2 h-2 bg-primary/30 rounded-full animate-pulse"></div>
           </div>
         </div>
@@ -292,11 +294,11 @@ const HeroSection = () => {
       {/* Hero Title */}
       <div className="text-center py-16 relative z-10">
         <h1 className="text-5xl md:text-6xl font-playfair font-bold text-foreground mb-6 animate-fade-in">
-          Schilderijen Collectie
+          {t('hero.title')}
         </h1>
         <div className="w-24 h-1 bg-primary mx-auto mb-8 animate-fade-in" style={{ animationDelay: '0.2s' }}></div>
         <p className="text-xl text-muted-foreground font-cormorant max-w-2xl mx-auto animate-fade-in" style={{ animationDelay: '0.4s' }}>
-          Ontdek een wereld van kleuren, emoties en expressie
+          {t('hero.subtitle')}
         </p>
       </div>
 
@@ -319,7 +321,7 @@ const HeroSection = () => {
       {/* Call to Action */}
       <div className="text-center py-16 animate-fade-in" style={{ animationDelay: '0.8s' }}>
         <p className="text-xl text-muted-foreground font-cormorant mb-6">
-          Bekijk de volledige collectie en ontdek alle schilderijen in detail
+          {t('hero.subtitle')}
         </p>
         <button
           onClick={() => {
@@ -330,7 +332,7 @@ const HeroSection = () => {
           }}
           className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-3 rounded-lg font-cormorant text-lg transition-all duration-300 hover:scale-105 gallery-shadow"
         >
-          Bekijk alle schilderijen
+          {t('hero.cta')}
         </button>
       </div>
 
@@ -414,7 +416,7 @@ const HeroSection = () => {
                     
                     {selectedArtwork.description && (
                       <div>
-                        <h4 className="font-playfair font-medium text-foreground mb-2">Beschrijving</h4>
+                        <h4 className="font-playfair font-medium text-foreground mb-2">{t('modal.description')}</h4>
                         <p className="text-muted-foreground font-cormorant">{selectedArtwork.description}</p>
                       </div>
                     )}
@@ -422,28 +424,28 @@ const HeroSection = () => {
                     <div className="space-y-3">
                       {selectedArtwork.year && (
                         <div>
-                          <span className="font-playfair font-medium text-foreground">Jaar: </span>
+                          <span className="font-playfair font-medium text-foreground">{t('modal.year')}: </span>
                           <span className="text-muted-foreground font-cormorant">{selectedArtwork.year}</span>
                         </div>
                       )}
                       
                       {selectedArtwork.dimensions && (
                         <div>
-                          <span className="font-playfair font-medium text-foreground">Afmetingen: </span>
+                          <span className="font-playfair font-medium text-foreground">{t('modal.dimensions')}: </span>
                           <span className="text-muted-foreground font-cormorant">{selectedArtwork.dimensions}</span>
                         </div>
                       )}
                       
                       {selectedArtwork.technique && (
                         <div>
-                          <span className="font-playfair font-medium text-foreground">Techniek: </span>
+                          <span className="font-playfair font-medium text-foreground">{t('modal.technique')}: </span>
                           <span className="text-muted-foreground font-cormorant">{selectedArtwork.technique}</span>
                         </div>
                       )}
                       
                       {selectedArtwork.location && (
                         <div>
-                          <span className="font-playfair font-medium text-foreground">Locatie: </span>
+                          <span className="font-playfair font-medium text-foreground">{t('modal.location')}: </span>
                           <span className="text-muted-foreground font-cormorant">{selectedArtwork.location}</span>
                         </div>
                       )}
@@ -473,7 +475,7 @@ const HeroSection = () => {
                     
                     {selectedArtwork.description && (
                       <div>
-                        <h4 className="font-playfair font-medium text-foreground mb-1 text-sm">Beschrijving</h4>
+                        <h4 className="font-playfair font-medium text-foreground mb-1 text-sm">{t('modal.description')}</h4>
                         <p className="text-muted-foreground font-cormorant text-sm">{selectedArtwork.description}</p>
                       </div>
                     )}
@@ -481,28 +483,28 @@ const HeroSection = () => {
                     <div className="grid grid-cols-2 gap-2 text-sm">
                       {selectedArtwork.year && (
                         <div>
-                          <span className="font-playfair font-medium text-foreground">Jaar: </span>
+                          <span className="font-playfair font-medium text-foreground">{t('modal.year')}: </span>
                           <span className="text-muted-foreground font-cormorant">{selectedArtwork.year}</span>
                         </div>
                       )}
                       
                       {selectedArtwork.dimensions && (
                         <div>
-                          <span className="font-playfair font-medium text-foreground">Afmetingen: </span>
+                          <span className="font-playfair font-medium text-foreground">{t('modal.dimensions')}: </span>
                           <span className="text-muted-foreground font-cormorant">{selectedArtwork.dimensions}</span>
                         </div>
                       )}
                       
                       {selectedArtwork.technique && (
                         <div className="col-span-2">
-                          <span className="font-playfair font-medium text-foreground">Techniek: </span>
+                          <span className="font-playfair font-medium text-foreground">{t('modal.technique')}: </span>
                           <span className="text-muted-foreground font-cormorant">{selectedArtwork.technique}</span>
                         </div>
                       )}
                       
                       {selectedArtwork.location && (
                         <div className="col-span-2">
-                          <span className="font-playfair font-medium text-foreground">Locatie: </span>
+                          <span className="font-playfair font-medium text-foreground">{t('modal.location')}: </span>
                           <span className="text-muted-foreground font-cormorant">{selectedArtwork.location}</span>
                         </div>
                       )}

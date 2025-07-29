@@ -1,4 +1,7 @@
+import { useLanguage } from '@/contexts/LanguageContext';
+
 const AboutSection = () => {
+  const { t } = useLanguage();
   return (
     <section id="over-mij" className="py-20 bg-background relative overflow-hidden">
       {/* Animated background particles */}
@@ -16,51 +19,34 @@ const AboutSection = () => {
             <div className="space-y-8 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
               <div>
                 <h2 className="text-4xl md:text-5xl font-playfair font-bold text-foreground mb-6 animate-slide-in-left">
-                  Achter het doek
+                  {t('about.title')}
                 </h2>
                 <div className="w-16 h-1 bg-primary mb-8 animate-width-expand"></div>
               </div>
               
               <div className="space-y-6 text-lg font-cormorant leading-relaxed">
                 <p className="text-muted-foreground animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
-                  Mijn naam is Nikita Beekhof, en ik ben een gepassioneerde schilder die zich specialiseert 
-                  in portretten en expressieve kunstwerken. Mijn werk draait om het vastleggen van emoties en 
-                  het vertellen van verhalen door middel van kleur, vorm en textuur.
+                  {t('about.p1')}
                 </p>
                 
                 <p className="text-muted-foreground animate-fade-in-up" style={{ animationDelay: '0.6s' }}>
-                  Al langer dan 10 jaar verken ik de grenzen tussen realisme en abstractie, waarbij ik zoek naar 
-                  de essentie van wat het betekent om mens te zijn. Elk schilderij is een dialoog tussen mij en 
-                  het onderwerp, een moment van verbinding dat ik probeer vast te leggen op doek.
+                  {t('about.p2')}
                 </p>
                 
                 <p className="text-muted-foreground animate-fade-in-up" style={{ animationDelay: '0.8s' }}>
-                  Mijn inspiratie komt uit het dagelijks leven, uit ontmoetingen met mensen, uit verhalen die 
-                  verteld moeten worden. Ik werk voornamelijk met acrylverf en olieverf, technieken die me 
-                  de vrijheid geven om zowel subtiele details als krachtige emoties uit te drukken.
+                  {t('about.p3')}
                 </p>
                 
                 <p className="text-muted-foreground animate-fade-in-up" style={{ animationDelay: '1.0s' }}>
-                  Wat begon als een pure passie is uitgegroeid tot mijn levensdoel. Het maakt me ontzettend 
-                  gelukkig wanneer mijn werk mensen raakt, wanneer ze een verbinding voelen met wat ik heb 
-                  gecreëerd. En als iemand besluit om een van mijn werken een plekje in hun leven te geven, 
-                  dan voelt dat als het mooiste compliment dat ik kan krijgen.
+                  {t('about.p4')}
                 </p>
                 
                 <p className="text-muted-foreground animate-fade-in-up" style={{ animationDelay: '1.2s' }}>
-                  Elk schilderij dat ik maak is uniek - net als de persoon of ruimte waar het uiteindelijk 
-                  komt te hangen. Ik werk graag samen met mensen om iets te creëren dat perfect past bij 
-                  hun verhaal, hun ruimte, hun gevoel. Want kunst moet leven, moet betekenis hebben.
+                  {t('about.p5')}
                 </p>
                 
                 <p className="text-muted-foreground animate-fade-in-up" style={{ animationDelay: '1.4s' }}>
-                  Bewust kies ik ervoor om geen reprodukties of prints te maken van mijn werk. Elk schilderij 
-                  draagt een verhaal in zich, een emotie die ontstaan is op een specifiek moment in tijd. 
-                  Het mooiste van kunst is dat er maar één persoon ter wereld is die dat specifieke werk kan 
-                  bezitten - dat maakt de connectie tussen kunstwerk en eigenaar zo bijzonder. Wanneer je dit 
-                  vermenigvuldigt, verdwijnt die magie en die exclusieve band. Een schilderij is als een 
-                  liefdesbrief die maar aan één persoon geschreven kan worden, een geheim dat maar met één 
-                  iemand gedeeld kan worden.
+                  {t('about.p6')}
                 </p>
               </div>
             </div>
