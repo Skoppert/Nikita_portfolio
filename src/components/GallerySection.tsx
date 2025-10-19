@@ -111,6 +111,47 @@ const GallerySection = () => {
         year: "",
         dimensions: "",
         technique: ""
+      },
+      {
+        title: "Sea Sparkle",
+        imageSrc: "/images/gezichten/Sea Sparkle.jpg",
+        description: "",
+        year: "",
+        dimensions: "",
+        technique: ""
+      },
+      {
+        title: "The Echo",
+        imageSrc: "/images/gezichten/The Echo.jpg",
+        description: "",
+        year: "",
+        dimensions: "",
+        technique: ""
+      },
+      {
+        title: "The Calm",
+        imageSrc: "/images/gezichten/The Calm.jpg",
+        description: "",
+        year: "",
+        dimensions: "",
+        technique: ""
+      },
+      {
+        title: "The Gold One",
+        imageSrc: "/images/gezichten/The Gold One.jpg",
+        description: "",
+        year: "",
+        dimensions: "",
+        technique: "",
+        location: "Blend Baarle"
+      },
+      {
+        title: "The Fall",
+        imageSrc: "/images/gezichten/The Fall.jpg",
+        description: "",
+        year: "",
+        dimensions: "",
+        technique: ""
       }
     ],
     uniques: [
@@ -147,6 +188,14 @@ const GallerySection = () => {
         dimensions: "",
         technique: ""
       },
+      {
+        title: "Rebirth",
+        imageSrc: "/images/expressie/Rebirth.jpg",
+        description: "",
+        year: "",
+        dimensions: "",
+        technique: ""
+      }
     ]
   };
 
@@ -248,10 +297,10 @@ const GallerySection = () => {
               </div>
             </div>
             
-            {/* Second part - Three items with custom sizing, centered */}
+            {/* Second part - Four items with custom sizing, centered */}
             <div className="flex gap-6 items-start justify-center">
               {/* The light from a woman - smallest */}
-              <div className="w-1/4 animate-fade-in-scale" style={{ animationDelay: '0.4s', animationFillMode: 'both' }}>
+              <div className="w-1/5 animate-fade-in-scale" style={{ animationDelay: '0.4s', animationFillMode: 'both' }}>
                 <ArtworkCard
                   key={`${activeCategory}-the-light-from-a-woman`}
                   title="The light from a woman"
@@ -264,9 +313,9 @@ const GallerySection = () => {
                   className="transition-all duration-500 hover:scale-105 hover:rotate-1"
                 />
               </div>
-              
-              {/* God is a woman - replacing small Sleeping Beauty */}
-              <div className="w-1/4 animate-fade-in-scale" style={{ animationDelay: '0.5s', animationFillMode: 'both' }}>
+
+              {/* God is a woman */}
+              <div className="w-1/5 animate-fade-in-scale" style={{ animationDelay: '0.5s', animationFillMode: 'both' }}>
                 <ArtworkCard
                   key={`${activeCategory}-god-is-a-woman`}
                   title="God is a woman"
@@ -280,9 +329,9 @@ const GallerySection = () => {
                   className="transition-all duration-500 hover:scale-105 hover:rotate-1"
                 />
               </div>
-              
-              {/* Flow - smaller */}
-              <div className="w-1/4 animate-fade-in-scale" style={{ animationDelay: '0.6s', animationFillMode: 'both' }}>
+
+              {/* Flow */}
+              <div className="w-1/5 animate-fade-in-scale" style={{ animationDelay: '0.6s', animationFillMode: 'both' }}>
                 <ArtworkCard
                   key={`${activeCategory}-flow`}
                   title="Flow"
@@ -293,6 +342,21 @@ const GallerySection = () => {
                   dimensions=""
                   technique=""
                   location="Blend Baarle"
+                  className="transition-all duration-500 hover:scale-105 hover:rotate-1"
+                />
+              </div>
+
+              {/* Rebirth */}
+              <div className="w-1/5 animate-fade-in-scale" style={{ animationDelay: '0.7s', animationFillMode: 'both' }}>
+                <ArtworkCard
+                  key={`${activeCategory}-rebirth`}
+                  title="Rebirth"
+                  category={categories.find(c => c.key === activeCategory)?.label || ''}
+                  imageSrc="/images/expressie/Rebirth.jpg"
+                  description=""
+                  year=""
+                  dimensions=""
+                  technique=""
                   className="transition-all duration-500 hover:scale-105 hover:rotate-1"
                 />
               </div>

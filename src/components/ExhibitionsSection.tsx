@@ -19,6 +19,10 @@ const ExhibitionsSection = () => {
       {
         title: "God is a woman",
         imageSrc: "/images/expressie/God is a woman.jpg"
+      },
+      {
+        title: "The Gold One",
+        imageSrc: "/images/gezichten/The Gold One.jpg"
       }
     ],
     "Café De Pomp": [

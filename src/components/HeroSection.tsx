@@ -122,6 +122,47 @@ const HeroSection = () => {
         year: "",
         dimensions: "",
         technique: ""
+      },
+      {
+        title: "Sea Sparkle",
+        imageSrc: "/images/gezichten/Sea Sparkle.jpg",
+        description: "",
+        year: "",
+        dimensions: "",
+        technique: ""
+      },
+      {
+        title: "The Echo",
+        imageSrc: "/images/gezichten/The Echo.jpg",
+        description: "",
+        year: "",
+        dimensions: "",
+        technique: ""
+      },
+      {
+        title: "The Calm",
+        imageSrc: "/images/gezichten/The Calm.jpg",
+        description: "",
+        year: "",
+        dimensions: "",
+        technique: ""
+      },
+      {
+        title: "The Gold One",
+        imageSrc: "/images/gezichten/The Gold One.jpg",
+        description: "",
+        year: "",
+        dimensions: "",
+        technique: "",
+        location: "Blend Baarle"
+      },
+      {
+        title: "The Fall",
+        imageSrc: "/images/gezichten/The Fall.jpg",
+        description: "",
+        year: "",
+        dimensions: "",
+        technique: ""
       }
     ],
     uniques: [
@@ -171,6 +212,14 @@ const HeroSection = () => {
       {
         title: "The light from a woman",
         imageSrc: "/images/expressie/The light from a woman.jpg",
+        description: "",
+        year: "",
+        dimensions: "",
+        technique: ""
+      },
+      {
+        title: "Rebirth",
+        imageSrc: "/images/expressie/Rebirth.jpg",
         description: "",
         year: "",
         dimensions: "",
