@@ -113,8 +113,8 @@ const GallerySection = () => {
         technique: ""
       },
       {
-        title: "Sea Sparkle",
-        imageSrc: "/images/gezichten/Sea Sparkle.jpg",
+        title: "The Sea Sparkle",
+        imageSrc: "/images/gezichten/The Sea Sparkle.jpg",
         description: "",
         year: "",
         dimensions: "",
@@ -152,6 +152,38 @@ const GallerySection = () => {
         year: "",
         dimensions: "",
         technique: ""
+      },
+      {
+        title: "The Collision",
+        imageSrc: "/images/gezichten/The Collision.jpg",
+        description: "",
+        year: "",
+        dimensions: "",
+        technique: ""
+      },
+      {
+        title: "The Core",
+        imageSrc: "/images/gezichten/The Core.jpg",
+        description: "",
+        year: "",
+        dimensions: "",
+        technique: ""
+      },
+      {
+        title: "The Memory",
+        imageSrc: "/images/gezichten/The Memory.jpg",
+        description: "",
+        year: "",
+        dimensions: "",
+        technique: ""
+      },
+      {
+        title: "The Trace",
+        imageSrc: "/images/gezichten/The Trace.jpg",
+        description: "",
+        year: "",
+        dimensions: "",
+        technique: ""
       }
     ],
     uniques: [
@@ -182,7 +214,7 @@ const GallerySection = () => {
       },
       {
         title: "The light from a woman",
-        imageSrc: "/images/expressie/The light from a woman.jpg",
+        imageSrc: "/images/expressie/The light from a woman.PNG",
         description: "",
         year: "",
         dimensions: "",
@@ -191,6 +223,14 @@ const GallerySection = () => {
       {
         title: "Rebirth",
         imageSrc: "/images/expressie/Rebirth.jpg",
+        description: "",
+        year: "",
+        dimensions: "",
+        technique: ""
+      },
+      {
+        title: "Red Silence",
+        imageSrc: "/images/expressie/Red Silence.jpg",
         description: "",
         year: "",
         dimensions: "",
@@ -247,8 +287,8 @@ const GallerySection = () => {
 
         {/* Gallery Grid with side-by-side layout for last two items */}
         {activeCategory === 'uniques' ? (
-          <div className="space-y-8">
-            {/* First part - custom layout with different sizes */}
+          <div className="space-y-12">
+            {/* First row - 3 items */}
             <div className="flex gap-6 items-start justify-center">
               {/* Peaky Blinder - small */}
               <div className="w-1/4 animate-fade-in-scale" style={{ animationDelay: '0.1s', animationFillMode: 'both' }}>
@@ -264,7 +304,7 @@ const GallerySection = () => {
                   className="transition-all duration-500 hover:scale-105 hover:rotate-1"
                 />
               </div>
-              
+
               {/* Sleeping Beauty - large, in the middle */}
               <div className="w-2/5 animate-fade-in-scale" style={{ animationDelay: '0.2s', animationFillMode: 'both' }}>
                 <ArtworkCard
@@ -280,7 +320,7 @@ const GallerySection = () => {
                   className="transition-all duration-500 hover:scale-105 hover:rotate-1"
                 />
               </div>
-              
+
               {/* Marilyn Monroe - small */}
               <div className="w-1/4 animate-fade-in-scale" style={{ animationDelay: '0.3s', animationFillMode: 'both' }}>
                 <ArtworkCard
@@ -296,16 +336,16 @@ const GallerySection = () => {
                 />
               </div>
             </div>
-            
-            {/* Second part - Four items with custom sizing, centered */}
+
+            {/* Second row - 3 items */}
             <div className="flex gap-6 items-start justify-center">
-              {/* The light from a woman - smallest */}
-              <div className="w-1/5 animate-fade-in-scale" style={{ animationDelay: '0.4s', animationFillMode: 'both' }}>
+              {/* The light from a woman */}
+              <div className="w-1/4 animate-fade-in-scale" style={{ animationDelay: '0.4s', animationFillMode: 'both' }}>
                 <ArtworkCard
                   key={`${activeCategory}-the-light-from-a-woman`}
                   title="The light from a woman"
                   category={categories.find(c => c.key === activeCategory)?.label || ''}
-                  imageSrc="/images/expressie/The light from a woman.jpg"
+                  imageSrc="/images/expressie/The light from a woman.PNG"
                   description=""
                   year=""
                   dimensions=""
@@ -315,7 +355,7 @@ const GallerySection = () => {
               </div>
 
               {/* God is a woman */}
-              <div className="w-1/5 animate-fade-in-scale" style={{ animationDelay: '0.5s', animationFillMode: 'both' }}>
+              <div className="w-1/4 animate-fade-in-scale" style={{ animationDelay: '0.5s', animationFillMode: 'both' }}>
                 <ArtworkCard
                   key={`${activeCategory}-god-is-a-woman`}
                   title="God is a woman"
@@ -331,7 +371,7 @@ const GallerySection = () => {
               </div>
 
               {/* Flow */}
-              <div className="w-1/5 animate-fade-in-scale" style={{ animationDelay: '0.6s', animationFillMode: 'both' }}>
+              <div className="w-1/4 animate-fade-in-scale" style={{ animationDelay: '0.6s', animationFillMode: 'both' }}>
                 <ArtworkCard
                   key={`${activeCategory}-flow`}
                   title="Flow"
@@ -345,14 +385,32 @@ const GallerySection = () => {
                   className="transition-all duration-500 hover:scale-105 hover:rotate-1"
                 />
               </div>
+            </div>
 
+            {/* Third row - 2 items */}
+            <div className="flex gap-6 items-start justify-center">
               {/* Rebirth */}
-              <div className="w-1/5 animate-fade-in-scale" style={{ animationDelay: '0.7s', animationFillMode: 'both' }}>
+              <div className="w-1/4 animate-fade-in-scale" style={{ animationDelay: '0.7s', animationFillMode: 'both' }}>
                 <ArtworkCard
                   key={`${activeCategory}-rebirth`}
                   title="Rebirth"
                   category={categories.find(c => c.key === activeCategory)?.label || ''}
                   imageSrc="/images/expressie/Rebirth.jpg"
+                  description=""
+                  year=""
+                  dimensions=""
+                  technique=""
+                  className="transition-all duration-500 hover:scale-105 hover:rotate-1"
+                />
+              </div>
+
+              {/* Red Silence */}
+              <div className="w-1/4 animate-fade-in-scale" style={{ animationDelay: '0.8s', animationFillMode: 'both' }}>
+                <ArtworkCard
+                  key={`${activeCategory}-red-silence`}
+                  title="Red Silence"
+                  category={categories.find(c => c.key === activeCategory)?.label || ''}
+                  imageSrc="/images/expressie/Red Silence.jpg"
                   description=""
                   year=""
                   dimensions=""

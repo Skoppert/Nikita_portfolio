@@ -124,8 +124,8 @@ const HeroSection = () => {
         technique: ""
       },
       {
-        title: "Sea Sparkle",
-        imageSrc: "/images/gezichten/Sea Sparkle.jpg",
+        title: "The Sea Sparkle",
+        imageSrc: "/images/gezichten/The Sea Sparkle.jpg",
         description: "",
         year: "",
         dimensions: "",
@@ -159,6 +159,38 @@ const HeroSection = () => {
       {
         title: "The Fall",
         imageSrc: "/images/gezichten/The Fall.jpg",
+        description: "",
+        year: "",
+        dimensions: "",
+        technique: ""
+      },
+      {
+        title: "The Collision",
+        imageSrc: "/images/gezichten/The Collision.jpg",
+        description: "",
+        year: "",
+        dimensions: "",
+        technique: ""
+      },
+      {
+        title: "The Core",
+        imageSrc: "/images/gezichten/The Core.jpg",
+        description: "",
+        year: "",
+        dimensions: "",
+        technique: ""
+      },
+      {
+        title: "The Memory",
+        imageSrc: "/images/gezichten/The Memory.jpg",
+        description: "",
+        year: "",
+        dimensions: "",
+        technique: ""
+      },
+      {
+        title: "The Trace",
+        imageSrc: "/images/gezichten/The Trace.jpg",
         description: "",
         year: "",
         dimensions: "",
@@ -211,7 +243,7 @@ const HeroSection = () => {
       },
       {
         title: "The light from a woman",
-        imageSrc: "/images/expressie/The light from a woman.jpg",
+        imageSrc: "/images/expressie/The light from a woman.PNG",
         description: "",
         year: "",
         dimensions: "",
@@ -220,6 +252,14 @@ const HeroSection = () => {
       {
         title: "Rebirth",
         imageSrc: "/images/expressie/Rebirth.jpg",
+        description: "",
+        year: "",
+        dimensions: "",
+        technique: ""
+      },
+      {
+        title: "Red Silence",
+        imageSrc: "/images/expressie/Red Silence.jpg",
         description: "",
         year: "",
         dimensions: "",
