@@ -1,45 +1,30 @@
 import type { VercelRequest, VercelResponse } from "@vercel/node";
-import { webSearchTool, Agent, AgentInputItem, Runner, withTrace } from "@openai/agents";
+import OpenAI from "openai";
 
-const webSearchPreview = webSearchTool({
-  userLocation: {
-    type: "approximate",
-    country: undefined,
-    region: undefined,
-    city: undefined,
-    timezone: undefined
-  },
-  searchContextSize: "medium",
-  filters: {
-    allowed_domains: [
-      "nikitabeekhof.art"
-    ]
-  }
+const openai = new OpenAI({
+  apiKey: process.env.OPENAI_API_KEY,
 });
 
-const artAgent = new Agent({
-  name: "Art Agent",
-  instructions: `You are a helpful, really enthusiastic assistant that helps finding paintings from the artist Nikita Beekhof. You answer questions in multiple languages.
+const SYSTEM_PROMPT = `You are a helpful, really enthusiastic assistant that helps finding paintings from the artist Nikita Beekhof. You answer questions in multiple languages.
 
 Your task is to inform people about different pieces of art. Prices for pieces named Originals are €2.500 and Uniques start from €1.150
 
 For precise indications, they should contact Nikita through the form.
 
-When people want to reach out, you direct them to the contact page where they can reach out to Nikita.`,
-  model: "gpt-5-nano",
-  tools: [
-    webSearchPreview
-  ],
-  modelSettings: {
-    reasoning: {
-      effort: "medium"
-    },
-    store: true
-  }
-});
+When people want to reach out, you direct them to the contact page where they can reach out to Nikita.
+
+You have knowledge about Nikita Beekhof's art which can be found on nikitabeekhof.art. Be enthusiastic and helpful!`;
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
-  // Only allow POST requests
+  // CORS headers
+  res.setHeader("Access-Control-Allow-Origin", "*");
+  res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+
+  if (req.method === "OPTIONS") {
+    return res.status(200).end();
+  }
+
   if (req.method !== "POST") {
     return res.status(405).json({ error: "Method not allowed" });
   }
@@ -51,28 +36,23 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       return res.status(400).json({ error: "Message is required" });
     }
 
-    const conversationHistory: AgentInputItem[] = [
-      { role: "user", content: [{ type: "input_text", text: message }] }
-    ];
-
-    const runner = new Runner({
-      traceMetadata: {
-        __trace_source__: "agent-builder",
-        workflow_id: "wf_68f526dc78d48190a1d56edaf8c69a0001bfbfbdf0682996"
-      }
+    const completion = await openai.chat.completions.create({
+      model: "gpt-4o-mini",
+      messages: [
+        { role: "system", content: SYSTEM_PROMPT },
+        { role: "user", content: message }
+      ],
+      max_tokens: 500,
+      temperature: 0.7,
     });
 
-    const result = await withTrace("Nikita beekhof art Assistant", async () => {
-      return await runner.run(artAgent, [...conversationHistory]);
-    });
+    const response = completion.choices[0]?.message?.content;
 
-    if (!result.finalOutput) {
-      return res.status(500).json({ error: "No response from agent" });
+    if (!response) {
+      return res.status(500).json({ error: "No response from OpenAI" });
     }
 
-    return res.status(200).json({
-      response: result.finalOutput
-    });
+    return res.status(200).json({ response });
 
   } catch (error) {
     console.error("Chat API error:", error);
