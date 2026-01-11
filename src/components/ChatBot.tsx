@@ -15,6 +15,19 @@ const ChatBot = () => {
   const [isLoading, setIsLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
+  // Preprocess markdown to ensure proper line breaks
+  const formatMarkdown = (text: string): string => {
+    return text
+      // Add line break before list items that aren't at the start
+      .replace(/([^\n])(\s*-\s+\*\*)/g, '$1\n\n$2')
+      // Add line break before numbered items
+      .replace(/([^\n])(\s*\d+\.\s+)/g, '$1\n\n$2')
+      // Convert single newlines to double for paragraph breaks
+      .replace(/\n(?!\n)/g, '\n\n')
+      // Clean up excessive newlines
+      .replace(/\n{3,}/g, '\n\n');
+  };
+
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
@@ -113,23 +126,25 @@ const ChatBot = () => {
                 }`}
               >
                 {message.role === 'assistant' ? (
-                  <ReactMarkdown
-                    components={{
-                      p: ({ children }) => <p className="mb-2 last:mb-0">{children}</p>,
-                      strong: ({ children }) => <strong className="font-bold">{children}</strong>,
-                      em: ({ children }) => <em className="italic">{children}</em>,
-                      ul: ({ children }) => <ul className="list-disc list-inside mb-2">{children}</ul>,
-                      ol: ({ children }) => <ol className="list-decimal list-inside mb-2">{children}</ol>,
-                      li: ({ children }) => <li className="mb-1">{children}</li>,
-                      a: ({ href, children }) => (
-                        <a href={href} target="_blank" rel="noopener noreferrer" className="text-primary underline hover:text-primary/80">
-                          {children}
-                        </a>
-                      ),
-                    }}
-                  >
-                    {message.content}
-                  </ReactMarkdown>
+                  <div className="prose prose-sm max-w-none">
+                    <ReactMarkdown
+                      components={{
+                        p: ({ children }) => <p className="mb-3 last:mb-0">{children}</p>,
+                        strong: ({ children }) => <strong className="font-bold">{children}</strong>,
+                        em: ({ children }) => <em className="italic">{children}</em>,
+                        ul: ({ children }) => <ul className="list-disc list-inside mb-3 space-y-1">{children}</ul>,
+                        ol: ({ children }) => <ol className="list-decimal list-inside mb-3 space-y-1">{children}</ol>,
+                        li: ({ children }) => <li className="mb-1">{children}</li>,
+                        a: ({ href, children }) => (
+                          <a href={href} target="_blank" rel="noopener noreferrer" className="text-primary underline hover:text-primary/80">
+                            {children}
+                          </a>
+                        ),
+                      }}
+                    >
+                      {formatMarkdown(message.content)}
+                    </ReactMarkdown>
+                  </div>
                 ) : (
                   message.content
                 )}
