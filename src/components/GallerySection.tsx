@@ -184,6 +184,30 @@ const GallerySection = () => {
         year: "",
         dimensions: "",
         technique: ""
+      },
+      {
+        title: "The Unity",
+        imageSrc: "/images/gezichten/The Unity.jpeg",
+        description: "",
+        year: "",
+        dimensions: "",
+        technique: ""
+      },
+      {
+        title: "The Inferno",
+        imageSrc: "/images/gezichten/The Inferno.jpeg",
+        description: "",
+        year: "",
+        dimensions: "",
+        technique: ""
+      },
+      {
+        title: "The Bordeaux",
+        imageSrc: "/images/gezichten/The Bordeaux.jpeg",
+        description: "",
+        year: "",
+        dimensions: "",
+        technique: ""
       }
     ],
     uniques: [
